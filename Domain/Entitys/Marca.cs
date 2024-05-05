@@ -10,6 +10,5 @@ namespace Domain.Entities
         public int MarcaId { get; set; }
         public string NombreMarca { get; set; }
         public ICollection<Modelo> Modelos { get; set; }
-       
     }
 }

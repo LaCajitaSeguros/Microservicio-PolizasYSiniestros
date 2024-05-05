@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -23,6 +24,22 @@ namespace Infraestructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Marca", x => x.MarcaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Ubicacion",
+                columns: table => new
+                {
+                    UbicacionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProvinciaId = table.Column<int>(type: "int", nullable: false),
+                    LocalidadId = table.Column<int>(type: "int", nullable: false),
+                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Altura = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ubicacion", x => x.UbicacionId);
                 });
 
             migrationBuilder.CreateTable(
@@ -64,6 +81,60 @@ namespace Infraestructure.Migrations
                         principalTable: "Modelo",
                         principalColumn: "ModeloId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BienAsegurado",
+                columns: table => new
+                {
+                    BienAseguradoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Patente = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NroChasis = table.Column<int>(type: "int", nullable: false),
+                    NroMotor = table.Column<int>(type: "int", nullable: false),
+                    TieneGnc = table.Column<bool>(type: "bit", nullable: false),
+                    UsoParticular = table.Column<bool>(type: "bit", nullable: false),
+                    UbicacionId = table.Column<int>(type: "int", nullable: false),
+                    VersionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BienAsegurado", x => x.BienAseguradoId);
+                    table.ForeignKey(
+                        name: "FK_BienAsegurado_Ubicacion_UbicacionId",
+                        column: x => x.UbicacionId,
+                        principalTable: "Ubicacion",
+                        principalColumn: "UbicacionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BienAsegurado_Version_VersionId",
+                        column: x => x.VersionId,
+                        principalTable: "Version",
+                        principalColumn: "VersionId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Poliza",
+                columns: table => new
+                {
+                    PolicaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PlanId = table.Column<int>(type: "int", nullable: false),
+                    Prima = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BienAseguradoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Poliza", x => x.PolicaId);
+                    table.ForeignKey(
+                        name: "FK_Poliza_BienAsegurado_BienAseguradoId",
+                        column: x => x.BienAseguradoId,
+                        principalTable: "BienAsegurado",
+                        principalColumn: "BienAseguradoId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -127,9 +198,27 @@ namespace Infraestructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_BienAsegurado_UbicacionId",
+                table: "BienAsegurado",
+                column: "UbicacionId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BienAsegurado_VersionId",
+                table: "BienAsegurado",
+                column: "VersionId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Modelo_MarcaId",
                 table: "Modelo",
                 column: "MarcaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Poliza_BienAseguradoId",
+                table: "Poliza",
+                column: "BienAseguradoId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Version_ModeloId",
@@ -140,6 +229,15 @@ namespace Infraestructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Poliza");
+
+            migrationBuilder.DropTable(
+                name: "BienAsegurado");
+
+            migrationBuilder.DropTable(
+                name: "Ubicacion");
+
             migrationBuilder.DropTable(
                 name: "Version");
 
