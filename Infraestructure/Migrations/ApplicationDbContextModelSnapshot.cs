@@ -414,12 +414,118 @@ namespace Infraestructure.Migrations
                     b.Property<decimal>("Prima")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("usuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("PolicaId");
 
                     b.HasIndex("BienAseguradoId")
                         .IsUnique();
 
                     b.ToTable("Poliza");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.Siniestro", b =>
+                {
+                    b.Property<int>("SiniestroId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SiniestroId"));
+
+                    b.Property<string>("Imagenes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Observacion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PolizaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UbicacionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SiniestroId");
+
+                    b.HasIndex("PolizaId");
+
+                    b.HasIndex("UbicacionId")
+                        .IsUnique();
+
+                    b.ToTable("Siniestro");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.SiniestroTipoDeSiniestro", b =>
+                {
+                    b.Property<int>("SiniestroId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoDeSiniestroId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SiniestroId", "TipoDeSiniestroId");
+
+                    b.HasIndex("TipoDeSiniestroId");
+
+                    b.ToTable("SiniestroTipoDeSiniestro");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.Tercero", b =>
+                {
+                    b.Property<int>("TerceroId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TerceroId"));
+
+                    b.Property<string>("CompaniaSeguro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Patente")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SiniestroId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Telefono")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UbicacionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TerceroId");
+
+                    b.HasIndex("SiniestroId");
+
+                    b.HasIndex("UbicacionId")
+                        .IsUnique();
+
+                    b.ToTable("Tercero");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.TipoDeSiniestro", b =>
+                {
+                    b.Property<int>("TipoDeSiniestroId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TipoDeSiniestroId"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TipoDeSiniestroId");
+
+                    b.ToTable("TipoDeSiniestro");
                 });
 
             modelBuilder.Entity("Domain.Entitys.Ubicacion", b =>
@@ -500,6 +606,63 @@ namespace Infraestructure.Migrations
                     b.Navigation("BienAsegurado");
                 });
 
+            modelBuilder.Entity("Domain.Entitys.Siniestro", b =>
+                {
+                    b.HasOne("Domain.Entitys.Poliza", "Poliza")
+                        .WithMany("Siniestros")
+                        .HasForeignKey("PolizaId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entitys.Ubicacion", "Ubicacion")
+                        .WithOne("Siniestro")
+                        .HasForeignKey("Domain.Entitys.Siniestro", "UbicacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Poliza");
+
+                    b.Navigation("Ubicacion");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.SiniestroTipoDeSiniestro", b =>
+                {
+                    b.HasOne("Domain.Entitys.Siniestro", "Siniestro")
+                        .WithMany("SiniestroTipoDeSiniestros")
+                        .HasForeignKey("SiniestroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entitys.TipoDeSiniestro", "TipoDeSiniestro")
+                        .WithMany("SiniestroTipoDeSiniestros")
+                        .HasForeignKey("TipoDeSiniestroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Siniestro");
+
+                    b.Navigation("TipoDeSiniestro");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.Tercero", b =>
+                {
+                    b.HasOne("Domain.Entitys.Siniestro", "Siniestro")
+                        .WithMany("TercerosInvolucrados")
+                        .HasForeignKey("SiniestroId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entitys.Ubicacion", "Ubicacion")
+                        .WithOne("Tercero")
+                        .HasForeignKey("Domain.Entitys.Tercero", "UbicacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Siniestro");
+
+                    b.Navigation("Ubicacion");
+                });
+
             modelBuilder.Entity("Domain.Entities.Marca", b =>
                 {
                     b.Navigation("Modelos");
@@ -522,9 +685,32 @@ namespace Infraestructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Domain.Entitys.Poliza", b =>
+                {
+                    b.Navigation("Siniestros");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.Siniestro", b =>
+                {
+                    b.Navigation("SiniestroTipoDeSiniestros");
+
+                    b.Navigation("TercerosInvolucrados");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.TipoDeSiniestro", b =>
+                {
+                    b.Navigation("SiniestroTipoDeSiniestros");
+                });
+
             modelBuilder.Entity("Domain.Entitys.Ubicacion", b =>
                 {
                     b.Navigation("BienAsegurado")
+                        .IsRequired();
+
+                    b.Navigation("Siniestro")
+                        .IsRequired();
+
+                    b.Navigation("Tercero")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618
