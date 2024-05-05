@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Domain.Entitys;
 
 namespace Domain.Entities
 {
@@ -12,5 +13,7 @@ namespace Domain.Entities
         public decimal PrecioBase {  get; set; }
         public int ModeloId { get; set; }
         public Modelo Modelo { get; set; }
+        public BienAsegurado BienAsegurado { get; set; }
     }
+
 }
