@@ -1,6 +1,9 @@
 
 using Application.ConfigMapper;
+using Infraestructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Reflection;
 
 namespace PolizasYSiniestros
@@ -40,6 +43,11 @@ namespace PolizasYSiniestros
 
             //Config Automapper
             builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
+
+            //Inyection ApplicationDbContext
+            var connectionString = builder.Configuration["ConnectionString"];
+            builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connectionString));
+
 
             var app = builder.Build();
 
