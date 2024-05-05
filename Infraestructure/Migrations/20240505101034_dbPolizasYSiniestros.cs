@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -24,6 +23,19 @@ namespace Infraestructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Marca", x => x.MarcaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoDeSiniestro",
+                columns: table => new
+                {
+                    TipoDeSiniestroId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoDeSiniestro", x => x.TipoDeSiniestroId);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,6 +133,7 @@ namespace Infraestructure.Migrations
                     PolicaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlanId = table.Column<int>(type: "int", nullable: false),
+                    usuarioId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Prima = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     FechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -134,6 +147,86 @@ namespace Infraestructure.Migrations
                         column: x => x.BienAseguradoId,
                         principalTable: "BienAsegurado",
                         principalColumn: "BienAseguradoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Siniestro",
+                columns: table => new
+                {
+                    SiniestroId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Observacion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Imagenes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PolizaId = table.Column<int>(type: "int", nullable: false),
+                    UbicacionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Siniestro", x => x.SiniestroId);
+                    table.ForeignKey(
+                        name: "FK_Siniestro_Poliza_PolizaId",
+                        column: x => x.PolizaId,
+                        principalTable: "Poliza",
+                        principalColumn: "PolicaId");
+                    table.ForeignKey(
+                        name: "FK_Siniestro_Ubicacion_UbicacionId",
+                        column: x => x.UbicacionId,
+                        principalTable: "Ubicacion",
+                        principalColumn: "UbicacionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SiniestroTipoDeSiniestro",
+                columns: table => new
+                {
+                    SiniestroId = table.Column<int>(type: "int", nullable: false),
+                    TipoDeSiniestroId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SiniestroTipoDeSiniestro", x => new { x.SiniestroId, x.TipoDeSiniestroId });
+                    table.ForeignKey(
+                        name: "FK_SiniestroTipoDeSiniestro_Siniestro_SiniestroId",
+                        column: x => x.SiniestroId,
+                        principalTable: "Siniestro",
+                        principalColumn: "SiniestroId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SiniestroTipoDeSiniestro_TipoDeSiniestro_TipoDeSiniestroId",
+                        column: x => x.TipoDeSiniestroId,
+                        principalTable: "TipoDeSiniestro",
+                        principalColumn: "TipoDeSiniestroId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tercero",
+                columns: table => new
+                {
+                    TerceroId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Patente = table.Column<int>(type: "int", nullable: false),
+                    CompaniaSeguro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Telefono = table.Column<int>(type: "int", nullable: false),
+                    UbicacionId = table.Column<int>(type: "int", nullable: false),
+                    SiniestroId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tercero", x => x.TerceroId);
+                    table.ForeignKey(
+                        name: "FK_Tercero_Siniestro_SiniestroId",
+                        column: x => x.SiniestroId,
+                        principalTable: "Siniestro",
+                        principalColumn: "SiniestroId");
+                    table.ForeignKey(
+                        name: "FK_Tercero_Ubicacion_UbicacionId",
+                        column: x => x.UbicacionId,
+                        principalTable: "Ubicacion",
+                        principalColumn: "UbicacionId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -221,6 +314,33 @@ namespace Infraestructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Siniestro_PolizaId",
+                table: "Siniestro",
+                column: "PolizaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Siniestro_UbicacionId",
+                table: "Siniestro",
+                column: "UbicacionId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SiniestroTipoDeSiniestro_TipoDeSiniestroId",
+                table: "SiniestroTipoDeSiniestro",
+                column: "TipoDeSiniestroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tercero_SiniestroId",
+                table: "Tercero",
+                column: "SiniestroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tercero_UbicacionId",
+                table: "Tercero",
+                column: "UbicacionId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Version_ModeloId",
                 table: "Version",
                 column: "ModeloId");
@@ -229,6 +349,18 @@ namespace Infraestructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "SiniestroTipoDeSiniestro");
+
+            migrationBuilder.DropTable(
+                name: "Tercero");
+
+            migrationBuilder.DropTable(
+                name: "TipoDeSiniestro");
+
+            migrationBuilder.DropTable(
+                name: "Siniestro");
+
             migrationBuilder.DropTable(
                 name: "Poliza");
 

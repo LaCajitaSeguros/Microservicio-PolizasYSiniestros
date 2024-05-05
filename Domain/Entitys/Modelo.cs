@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -12,6 +12,6 @@ namespace Domain.Entities
         public int MarcaId { get; set; }
         public Marca Marca { get; set; }
         public ICollection<VersionVehiculo> vehiculoVersiones { get; set; }
-       // public ICollection<Vehiculo> Vehiculos { get; set; }
+        // public ICollection<Vehiculo> Vehiculos { get; set; }
     }
 }

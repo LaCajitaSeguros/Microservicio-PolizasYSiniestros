@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Domain.Entities;
 using System.ComponentModel.DataAnnotations;
-using Domain.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entitys
 {
@@ -11,14 +11,14 @@ namespace Domain.Entitys
         public int BienAseguradoId { get; set; }
         public string Patente { get; set; }
         public int NroChasis { get; set; }
-        public int NroMotor {  get; set; }
-        public bool TieneGnc {  get; set; }
+        public int NroMotor { get; set; }
+        public bool TieneGnc { get; set; }
         public bool UsoParticular { get; set; }
 
         public int UbicacionId { get; set; }
         public Ubicacion Ubicacion { get; set; }
 
-        public int VersionId { get; set; }  
+        public int VersionId { get; set; }
         public VersionVehiculo Version { get; set; }
 
 

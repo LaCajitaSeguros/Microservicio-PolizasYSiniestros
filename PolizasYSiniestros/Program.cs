@@ -3,7 +3,6 @@ using Application.ConfigMapper;
 using Infraestructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Reflection;
 
 namespace PolizasYSiniestros
