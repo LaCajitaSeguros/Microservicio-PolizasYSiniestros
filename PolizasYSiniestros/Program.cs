@@ -1,6 +1,11 @@
 
 using Application.ConfigMapper;
+using Application.Interfaces.Repository;
+using Application.Interfaces.Service;
+using Application.UserCase;
 using Infraestructure;
+using Infraestructure.Commands;
+using Infraestructure.Querys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -46,6 +51,11 @@ namespace PolizasYSiniestros
             //Inyection ApplicationDbContext
             var connectionString = builder.Configuration["ConnectionString"];
             builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(connectionString));
+
+            //Custom Inyection Dependency
+            builder.Services.AddTransient<IPolizaService, PolizaServiceImpl>();
+            builder.Services.AddTransient<IGenericRepository, GenericRepositoryImpl>();
+            builder.Services.AddTransient<IValidacionesRepository, ValidacionesRepositoryImpl>();
 
 
             var app = builder.Build();

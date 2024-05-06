@@ -30,12 +30,12 @@ namespace Infraestructure
                 .HasForeignKey(vv => vv.ModeloId)
                 .OnDelete(DeleteBehavior.Restrict);
             //Se agrego la relacion entre la Version del vehiculo y el bien asegurado, la fk la tiene el bien asegurado
-            modelBuilder.Entity<VersionVehiculo>()
-                .HasOne<BienAsegurado>(vv => vv.BienAsegurado)
-                .WithOne(ba => ba.Version)
-                .HasForeignKey<BienAsegurado>(ba => ba.VersionId)
-                .OnDelete(DeleteBehavior.Restrict);
-
+            /*  modelBuilder.Entity<VersionVehiculo>()
+                  .HasOne<BienAsegurado>(vv => vv.BienAsegurado)
+                  .WithOne(ba => ba.Version)
+                  .HasForeignKey<BienAsegurado>(ba => ba.VersionId)
+                  .OnDelete(DeleteBehavior.Restrict);
+            */
 
             modelBuilder.Entity<Modelo>()
                 .HasOne<Marca>(mod => mod.Marca)
@@ -106,6 +106,25 @@ namespace Infraestructure
                .HasOne<TipoDeSiniestro>(sts => sts.TipoDeSiniestro)
                .WithMany(tds => tds.SiniestroTipoDeSiniestros)
                .HasForeignKey(sts => sts.TipoDeSiniestroId);
+
+
+            //Customizo los datos y restricciones de las tablas
+            modelBuilder.Entity<Poliza>()
+                .Property(p => p.BienAseguradoId).IsRequired();
+            modelBuilder.Entity<Poliza>()
+                .HasIndex(p => p.BienAseguradoId).IsUnique();
+            modelBuilder.Entity<Poliza>()
+                .Property(p => p.NroDePoliza).IsRequired().HasMaxLength(9);
+
+
+
+            //Tabla de BienAsegurado
+            modelBuilder.Entity<BienAsegurado>()
+               .Property(ba => ba.Patente).IsRequired().HasMaxLength(10);
+            modelBuilder.Entity<BienAsegurado>()
+               .Property(ba => ba.CodChasis).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<BienAsegurado>()
+               .Property(ba => ba.CodMotor).IsRequired().HasMaxLength(50);
 
 
             modelBuilder.ApplyConfiguration(new MarcaConfiguracion());

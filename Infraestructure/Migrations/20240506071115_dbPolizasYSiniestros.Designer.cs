@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240505101034_dbPolizasYSiniestros")]
+    [Migration("20240506071115_dbPolizasYSiniestros")]
     partial class dbPolizasYSiniestros
     {
         /// <inheritdoc />
@@ -361,15 +361,20 @@ namespace Infraestructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BienAseguradoId"));
 
-                    b.Property<int>("NroChasis")
-                        .HasColumnType("int");
+                    b.Property<string>("CodChasis")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("NroMotor")
-                        .HasColumnType("int");
+                    b.Property<string>("CodMotor")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Patente")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<bool>("TieneGnc")
                         .HasColumnType("bit");
@@ -386,9 +391,6 @@ namespace Infraestructure.Migrations
                     b.HasKey("BienAseguradoId");
 
                     b.HasIndex("UbicacionId")
-                        .IsUnique();
-
-                    b.HasIndex("VersionId")
                         .IsUnique();
 
                     b.ToTable("BienAsegurado");
@@ -411,13 +413,17 @@ namespace Infraestructure.Migrations
                     b.Property<DateTime>("FechaVencimiento")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("NroDePoliza")
+                        .HasMaxLength(9)
+                        .HasColumnType("int");
+
                     b.Property<int>("PlanId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Prima")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("usuarioId")
+                    b.Property<string>("UsuarioId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -587,15 +593,7 @@ namespace Infraestructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.VersionVehiculo", "Version")
-                        .WithOne("BienAsegurado")
-                        .HasForeignKey("Domain.Entitys.BienAsegurado", "VersionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Ubicacion");
-
-                    b.Navigation("Version");
                 });
 
             modelBuilder.Entity("Domain.Entitys.Poliza", b =>
@@ -674,12 +672,6 @@ namespace Infraestructure.Migrations
             modelBuilder.Entity("Domain.Entities.Modelo", b =>
                 {
                     b.Navigation("vehiculoVersiones");
-                });
-
-            modelBuilder.Entity("Domain.Entities.VersionVehiculo", b =>
-                {
-                    b.Navigation("BienAsegurado")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entitys.BienAsegurado", b =>

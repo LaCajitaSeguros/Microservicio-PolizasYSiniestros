@@ -75,6 +75,31 @@ namespace Infraestructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BienAsegurado",
+                columns: table => new
+                {
+                    BienAseguradoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Patente = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    CodChasis = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CodMotor = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TieneGnc = table.Column<bool>(type: "bit", nullable: false),
+                    UsoParticular = table.Column<bool>(type: "bit", nullable: false),
+                    UbicacionId = table.Column<int>(type: "int", nullable: false),
+                    VersionId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BienAsegurado", x => x.BienAseguradoId);
+                    table.ForeignKey(
+                        name: "FK_BienAsegurado_Ubicacion_UbicacionId",
+                        column: x => x.UbicacionId,
+                        principalTable: "Ubicacion",
+                        principalColumn: "UbicacionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Version",
                 columns: table => new
                 {
@@ -96,44 +121,14 @@ namespace Infraestructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BienAsegurado",
-                columns: table => new
-                {
-                    BienAseguradoId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Patente = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NroChasis = table.Column<int>(type: "int", nullable: false),
-                    NroMotor = table.Column<int>(type: "int", nullable: false),
-                    TieneGnc = table.Column<bool>(type: "bit", nullable: false),
-                    UsoParticular = table.Column<bool>(type: "bit", nullable: false),
-                    UbicacionId = table.Column<int>(type: "int", nullable: false),
-                    VersionId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BienAsegurado", x => x.BienAseguradoId);
-                    table.ForeignKey(
-                        name: "FK_BienAsegurado_Ubicacion_UbicacionId",
-                        column: x => x.UbicacionId,
-                        principalTable: "Ubicacion",
-                        principalColumn: "UbicacionId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BienAsegurado_Version_VersionId",
-                        column: x => x.VersionId,
-                        principalTable: "Version",
-                        principalColumn: "VersionId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Poliza",
                 columns: table => new
                 {
                     PolicaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlanId = table.Column<int>(type: "int", nullable: false),
-                    usuarioId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UsuarioId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NroDePoliza = table.Column<int>(type: "int", maxLength: 9, nullable: false),
                     Prima = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     FechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -297,12 +292,6 @@ namespace Infraestructure.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_BienAsegurado_VersionId",
-                table: "BienAsegurado",
-                column: "VersionId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Modelo_MarcaId",
                 table: "Modelo",
                 column: "MarcaId");
@@ -356,28 +345,28 @@ namespace Infraestructure.Migrations
                 name: "Tercero");
 
             migrationBuilder.DropTable(
+                name: "Version");
+
+            migrationBuilder.DropTable(
                 name: "TipoDeSiniestro");
 
             migrationBuilder.DropTable(
                 name: "Siniestro");
 
             migrationBuilder.DropTable(
+                name: "Modelo");
+
+            migrationBuilder.DropTable(
                 name: "Poliza");
+
+            migrationBuilder.DropTable(
+                name: "Marca");
 
             migrationBuilder.DropTable(
                 name: "BienAsegurado");
 
             migrationBuilder.DropTable(
                 name: "Ubicacion");
-
-            migrationBuilder.DropTable(
-                name: "Version");
-
-            migrationBuilder.DropTable(
-                name: "Modelo");
-
-            migrationBuilder.DropTable(
-                name: "Marca");
         }
     }
 }
