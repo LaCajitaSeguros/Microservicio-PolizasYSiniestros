@@ -9,7 +9,8 @@ namespace Domain.Entitys
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PolicaId { get; set; }
         public int PlanId { get; set; }
-        public string usuarioId { get; set; }
+        public string UsuarioId { get; set; }
+        public int NroDePoliza { get; set; }
         public decimal Prima { get; set; }
         public DateTime FechaVencimiento { get; set; }
         public DateTime FechaInicio { get; set; }
@@ -18,6 +19,5 @@ namespace Domain.Entitys
         public BienAsegurado BienAsegurado { get; set; }
 
         public ICollection<Siniestro> Siniestros { get; set; }
-
     }
 }
