@@ -56,6 +56,7 @@ namespace PolizasYSiniestros
             builder.Services.AddTransient<IPolizaService, PolizaServiceImpl>();
             builder.Services.AddTransient<IGenericRepository, GenericRepositoryImpl>();
             builder.Services.AddTransient<IValidacionesRepository, ValidacionesRepositoryImpl>();
+            builder.Services.AddTransient<ISiniestroService, SiniestroServiceImpl>();
 
 
             var app = builder.Build();
