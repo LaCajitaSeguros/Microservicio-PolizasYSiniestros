@@ -20,7 +20,7 @@ namespace Application.ConfigMapper
 
             CreateMap<Poliza, PolizaPostResponse>()
             .ForMember(dest => dest.NumeroDePoliza, opt => opt.MapFrom(src => src.NroDePoliza))
-            .ForMember(dest => dest.BienAsegurado, opt => opt.MapFrom(src => src));
+            .ForMember(dest => dest.BienAsegurado, opt => opt.MapFrom(src => src.BienAsegurado));
         }
     }
 }
