@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Application.Dtos.DomainDTO
 {
     public class SiniestroDTO
     {
-        int TipoDeSiniestroID { get; set; }
+        public  List<TipoSiniestroDTO> Siniestros { get; set; }
 
-        string Descripcion { get; set; }
+        public string Observacion { get; set; }
 
-        UbicacionDTO Ubicacion { get; set; }
+        public UbicacionDTO Ubicacion { get; set; }
 
 
-        List<ImagenDTO> Imagenes { get; set; }
+        public List<ImagenDTO> Imagenes { get; set; }
 
-        List<TercerosInvolucradosDTO> TercerosInvolucrados { get; set; }
+        public List<TercerosInvolucradosDTO> TercerosInvolucrados { get; set; }
     }
 }

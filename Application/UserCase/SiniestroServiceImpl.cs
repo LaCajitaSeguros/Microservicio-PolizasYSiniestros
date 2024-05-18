@@ -27,7 +27,7 @@ namespace Application.UserCase
         }
 
 
-        public Task<SiniestroPostResponse> RegistrarSiniestroAsync(SiniestroPostRequest siniestroPostRequest)
+        public Task<SiniestroPostRequest> RegistrarSiniestroAsync(SiniestroPostRequest siniestroPostRequest)
         {
             throw new NotImplementedException();
         }
