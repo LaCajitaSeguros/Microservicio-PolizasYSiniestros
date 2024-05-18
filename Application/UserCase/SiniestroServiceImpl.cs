@@ -1,5 +1,4 @@
 ﻿using Application.Dtos.Requets;
-using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
@@ -39,9 +38,13 @@ namespace Application.UserCase
 
             if (poliza == null)
             {
-                throw new CustomBadRequest("No se encontro una poliza asociada al nro de poliza: " + siniestroPostRequest.NroDePoliza); 
+                throw new CustomBadRequest("No se encontro una poliza asociada al nro de poliza: " + siniestroPostRequest.NroDePoliza);
             }
-            
+
+            //Creo el siniestro y mapeo los datos del request
+            Siniestro siniestro = _mapper.Map<Siniestro>(siniestroPostRequest);
+
+
             return null;
         }
     }

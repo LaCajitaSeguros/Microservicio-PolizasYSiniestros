@@ -22,5 +22,5 @@ namespace Infraestructure.Querys
         }
     }
 }
-    
+
 

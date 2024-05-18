@@ -1,5 +1,4 @@
 ﻿using Application.Dtos.Requets;
-using Application.Dtos.Response;
 
 namespace Application.Interfaces.Service
 {

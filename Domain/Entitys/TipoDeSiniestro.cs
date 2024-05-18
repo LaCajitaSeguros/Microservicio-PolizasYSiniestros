@@ -14,6 +14,6 @@ namespace Domain.Entitys
         //Relacion
         public IList<SiniestroTipoDeSiniestro> SiniestroTipoDeSiniestros { get; set; }
 
-       
+
     }
 }

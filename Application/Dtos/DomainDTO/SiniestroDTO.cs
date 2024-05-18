@@ -3,7 +3,7 @@ namespace Application.Dtos.DomainDTO
 {
     public class SiniestroDTO
     {
-        public  List<TipoSiniestroDTO> TiposDeSiniestros { get; set; }
+        public List<TipoSiniestroDTO> TiposDeSiniestros { get; set; }
 
         public string Observacion { get; set; }
 

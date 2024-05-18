@@ -1,12 +1,9 @@
-﻿using Aplication.Dtos;
-using Application.Dtos.ApiError;
+﻿using Application.Dtos.ApiError;
 using Application.Dtos.Requets;
-using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
-using System.Net;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

@@ -2,9 +2,9 @@
 
 namespace Application.Dtos.Response
 {
-    public  class SiniestroPostResponse
+    public class SiniestroPostResponse
     {
-        public int NroPoliza {  get; set; }
+        public int NroPoliza { get; set; }
         public SiniestroDTO Siniestro { get; set; }
     }
 }
