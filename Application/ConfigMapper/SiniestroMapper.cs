@@ -10,12 +10,12 @@ namespace Application.ConfigMapper
     {
         public SiniestroMapperProfile()
         {
-
-            CreateMap<SiniestroDTO, Siniestro>();
+            CreateMap<SiniestroDTO, Siniestro>().ReverseMap();
 
             CreateMap<SiniestroPostRequest, Siniestro>()
                   .ForMember(dest => dest.TercerosInvolucrados, opt => opt.MapFrom(src => src.Siniestro.TercerosInvolucrados))
-                  .ForMember(dest => dest.Ubicacion, opt => opt.MapFrom(src => src.Siniestro.Ubicacion)).ReverseMap();
+                  .ForMember(dest => dest.Ubicacion, opt => opt.MapFrom(src => src.Siniestro.Ubicacion))
+                  .ForMember(dest => dest.Observacion, opt => opt.MapFrom(src => src.Siniestro.Observacion)).ReverseMap();
         }
     }
 }

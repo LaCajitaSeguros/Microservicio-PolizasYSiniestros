@@ -9,7 +9,6 @@ namespace Application.ConfigMapper
     {
         public TercerosInvolucradosMapper()
         {
-
             CreateMap<Tercero, TercerosInvolucradosDTO>().ReverseMap();
         }
     }
