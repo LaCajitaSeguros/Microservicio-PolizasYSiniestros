@@ -6,6 +6,6 @@ namespace Application.Dtos.Response
     {
         public int NumeroDePoliza { get; set; }
         public decimal Prima { get; set; }
-        public PolizaPostRequest BienAsegurado { get; set; }
+        public BienAseguradoPostRequest BienAsegurado { get; set; }
     }
 }
