@@ -1,4 +1,5 @@
-﻿using Application.Dtos.Requets;
+﻿using Application.Dtos.DomainDTO;
+using Application.Dtos.Requets;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
@@ -44,6 +45,18 @@ namespace Application.UserCase
             //Creo el siniestro y mapeo los datos del request
             Siniestro siniestro = _mapper.Map<Siniestro>(siniestroPostRequest);
 
+            //Formateo las imagenes del request a un string separado por comas y se las incorporo al objeto siniestro
+
+            List<string> listImagenesString = new List<string>();   
+
+            foreach (ImagenDTO imagenDTO in siniestroPostRequest.Siniestro.Imagenes)
+            {
+                listImagenesString.Add(imagenDTO.UrlImagen);
+            }
+
+            string imagenes = string.Join(",", listImagenesString);
+
+            siniestro.Imagenes = imagenes;  
 
             return null;
         }
