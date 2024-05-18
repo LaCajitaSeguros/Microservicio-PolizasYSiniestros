@@ -7,7 +7,7 @@ namespace Domain.Entitys
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PolicaId { get; set; }
+        public int PolizaId { get; set; }
         public int PlanId { get; set; }
         public string UsuarioId { get; set; }
         public int NroDePoliza { get; set; }

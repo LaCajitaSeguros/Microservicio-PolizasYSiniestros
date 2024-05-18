@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240506071115_dbPolizasYSiniestros")]
-    partial class dbPolizasYSiniestros
+    [Migration("20240518214147_DbPolizaYSiniestros")]
+    partial class DbPolizaYSiniestros
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -398,11 +398,11 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Poliza", b =>
                 {
-                    b.Property<int>("PolicaId")
+                    b.Property<int>("PolizaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PolicaId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PolizaId"));
 
                     b.Property<int>("BienAseguradoId")
                         .HasColumnType("int");
@@ -427,7 +427,7 @@ namespace Infraestructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PolicaId");
+                    b.HasKey("PolizaId");
 
                     b.HasIndex("BienAseguradoId")
                         .IsUnique();
@@ -490,7 +490,7 @@ namespace Infraestructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TerceroId"));
 
-                    b.Property<string>("CompaniaSeguro")
+                    b.Property<string>("CompaniaDeSeguro")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -498,8 +498,9 @@ namespace Infraestructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Patente")
-                        .HasColumnType("int");
+                    b.Property<string>("Patente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SiniestroId")
                         .HasColumnType("int");
@@ -535,6 +536,28 @@ namespace Infraestructure.Migrations
                     b.HasKey("TipoDeSiniestroId");
 
                     b.ToTable("TipoDeSiniestro");
+
+                    b.HasData(
+                        new
+                        {
+                            TipoDeSiniestroId = 1,
+                            Nombre = "Robo"
+                        },
+                        new
+                        {
+                            TipoDeSiniestroId = 2,
+                            Nombre = "Incendio"
+                        },
+                        new
+                        {
+                            TipoDeSiniestroId = 3,
+                            Nombre = "Choque"
+                        },
+                        new
+                        {
+                            TipoDeSiniestroId = 4,
+                            Nombre = "Granizo"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entitys.Ubicacion", b =>

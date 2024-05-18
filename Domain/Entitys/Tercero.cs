@@ -9,8 +9,8 @@ namespace Domain.Entitys
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TerceroId { get; set; }
         public string Nombre { get; set; }
-        public int Patente { get; set; }
-        public string CompaniaSeguro { get; set; }
+        public string Patente { get; set; }
+        public string CompaniaDeSeguro { get; set; }
 
         public int Telefono { get; set; }
 

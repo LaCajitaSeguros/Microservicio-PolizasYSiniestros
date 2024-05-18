@@ -6,7 +6,7 @@ namespace Application.Dtos.Requets
     {
         public int UsuarioId { get; set; }
 
-        public int PolizaId { get; set; }
+        public int NroDePoliza { get; set; }
 
         public SiniestroDTO Siniestro { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -7,7 +8,7 @@
 namespace Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class dbPolizasYSiniestros : Migration
+    public partial class DbPolizaYSiniestros : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -124,7 +125,7 @@ namespace Infraestructure.Migrations
                 name: "Poliza",
                 columns: table => new
                 {
-                    PolicaId = table.Column<int>(type: "int", nullable: false)
+                    PolizaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlanId = table.Column<int>(type: "int", nullable: false),
                     UsuarioId = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -136,7 +137,7 @@ namespace Infraestructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Poliza", x => x.PolicaId);
+                    table.PrimaryKey("PK_Poliza", x => x.PolizaId);
                     table.ForeignKey(
                         name: "FK_Poliza_BienAsegurado_BienAseguradoId",
                         column: x => x.BienAseguradoId,
@@ -163,7 +164,7 @@ namespace Infraestructure.Migrations
                         name: "FK_Siniestro_Poliza_PolizaId",
                         column: x => x.PolizaId,
                         principalTable: "Poliza",
-                        principalColumn: "PolicaId");
+                        principalColumn: "PolizaId");
                     table.ForeignKey(
                         name: "FK_Siniestro_Ubicacion_UbicacionId",
                         column: x => x.UbicacionId,
@@ -203,8 +204,8 @@ namespace Infraestructure.Migrations
                     TerceroId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Patente = table.Column<int>(type: "int", nullable: false),
-                    CompaniaSeguro = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Patente = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CompaniaDeSeguro = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Telefono = table.Column<int>(type: "int", nullable: false),
                     UbicacionId = table.Column<int>(type: "int", nullable: false),
                     SiniestroId = table.Column<int>(type: "int", nullable: false)
@@ -233,6 +234,17 @@ namespace Infraestructure.Migrations
                     { 1, "Fiat" },
                     { 2, "Ford" },
                     { 3, "BMW" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TipoDeSiniestro",
+                columns: new[] { "TipoDeSiniestroId", "Nombre" },
+                values: new object[,]
+                {
+                    { 1, "Robo" },
+                    { 2, "Incendio" },
+                    { 3, "Choque" },
+                    { 4, "Granizo" }
                 });
 
             migrationBuilder.InsertData(
