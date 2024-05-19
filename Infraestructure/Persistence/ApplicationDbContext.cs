@@ -130,6 +130,7 @@ namespace Infraestructure
             modelBuilder.ApplyConfiguration(new MarcaConfiguracion());
             modelBuilder.ApplyConfiguration(new ModeloConfiguracion());
             modelBuilder.ApplyConfiguration(new VersionConfiguracion());
+            modelBuilder.ApplyConfiguration(new TipoSiniestroConfiguracion());
         }
     }
 }

@@ -1,5 +1,3 @@
-
-using Application.ConfigMapper;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
 using Application.UserCase;
@@ -46,7 +44,7 @@ namespace PolizasYSiniestros
 
 
             //Config Automapper
-            builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             //Inyection ApplicationDbContext
             var connectionString = builder.Configuration["ConnectionString"];
@@ -56,6 +54,9 @@ namespace PolizasYSiniestros
             builder.Services.AddTransient<IPolizaService, PolizaServiceImpl>();
             builder.Services.AddTransient<IGenericRepository, GenericRepositoryImpl>();
             builder.Services.AddTransient<IValidacionesRepository, ValidacionesRepositoryImpl>();
+            builder.Services.AddTransient<ISiniestroService, SiniestroServiceImpl>();
+            builder.Services.AddTransient<IPolizaRepository, PolizaRepositoryImpl>();
+
 
 
             var app = builder.Build();
