@@ -1,5 +1,6 @@
 ﻿using Application.Dtos.DomainDTO;
 using Application.Dtos.Requets;
+using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
@@ -28,7 +29,7 @@ namespace Application.UserCase
             _polizaRepository = polizaRepository;
         }
 
-        public async Task<SiniestroPostRequest> RegistrarSiniestroAsync(SiniestroPostRequest siniestroPostRequest)
+        public async Task<SiniestroPostResponse> RegistrarSiniestroAsync(SiniestroPostRequest siniestroPostRequest)
         {
             Poliza poliza = await _polizaRepository.BuscarPolizaPorNroPoliza(siniestroPostRequest.NroDePoliza);
 
@@ -64,9 +65,40 @@ namespace Application.UserCase
 
             siniestro.SiniestroTipoDeSiniestros = tipoDeSiniestros;
 
-            await _genericRepository.save(siniestro);
+            Siniestro siniestroGuardado =  await _genericRepository.save(siniestro);
 
-            return null;
+            //Armo la respuesta
+            SiniestroPostResponse response = _mapper.Map<SiniestroPostResponse>(siniestroGuardado);
+            response.Siniestro = _mapper.Map<SiniestroDTO>(siniestroGuardado);
+
+            //Mapeo los tipo de siniestros del siniestro guardado al response
+           // response.Siniestro.TiposDeSiniestros = siniestroPostRequest.Siniestro.TiposDeSiniestros;
+
+            List<TipoSiniestroDTO> listTipoDeSiniestrosDtos = new List<TipoSiniestroDTO>();
+            foreach(SiniestroTipoDeSiniestro item in siniestroGuardado.SiniestroTipoDeSiniestros)
+            {
+                TipoSiniestroDTO tipoSiniestroDTO = new TipoSiniestroDTO();
+                tipoSiniestroDTO.TipoSiniestroId = item.TipoDeSiniestroId;
+                listTipoDeSiniestrosDtos.Add(tipoSiniestroDTO);
+            }
+            response.Siniestro.TiposDeSiniestros = listTipoDeSiniestrosDtos;
+
+
+            //Mapeo las imagenes desde un string a una lista de imagenes
+
+            List<ImagenDTO> listImagenes = new List<ImagenDTO>(); 
+            List<string> listStringImagenes = siniestroGuardado.Imagenes.Split(',').ToList();
+            foreach (string item in listStringImagenes)
+            {
+                ImagenDTO imagenDTO = new ImagenDTO();
+                imagenDTO.UrlImagen = item;
+                listImagenes.Add(imagenDTO);
+            }
+
+            response.Siniestro.Imagenes = listImagenes;
+            response.Siniestro.Imagenes = siniestroPostRequest.Siniestro.Imagenes;
+
+            return response;
         }
     }
 }
