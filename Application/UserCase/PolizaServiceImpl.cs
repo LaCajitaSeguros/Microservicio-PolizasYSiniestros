@@ -13,18 +13,27 @@ namespace Application.UserCase
     {
         private IGenericRepository _genericRepository;
         private IValidacionesRepository _validacionesRepository;
+        private IPolizaRepository _polizaRepository;
         private ILogger<PolizaServiceImpl> _logger;
         private IMapper _mapper;
 
         public PolizaServiceImpl(IGenericRepository genericRepository,
                                  ILogger<PolizaServiceImpl> logger,
                                  IMapper mapper,
-                                 IValidacionesRepository validacionesRepository)
+                                 IValidacionesRepository validacionesRepository,
+                                 IPolizaRepository polizaRepository)
         {
             _genericRepository = genericRepository;
             _validacionesRepository = validacionesRepository;
             _logger = logger;
             _mapper = mapper;
+            _polizaRepository = polizaRepository;
+        }
+
+        public async Task<PolizaGetResponse> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
+        {
+            await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+            return null;
         }
 
         public async Task<PolizaPostResponse> GuardarPolizaAsync(PolizaPostRequest polizaPostRequest)

@@ -6,5 +6,6 @@ namespace Application.Interfaces.Service
     public interface IPolizaService
     {
         public Task<PolizaPostResponse> GuardarPolizaAsync(PolizaPostRequest polizaPostRequest);
+        public Task<PolizaGetResponse> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId);
     }
 }

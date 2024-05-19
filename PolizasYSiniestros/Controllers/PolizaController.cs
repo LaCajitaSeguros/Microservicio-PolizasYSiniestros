@@ -23,13 +23,13 @@ namespace PolizasYSiniestros.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]")]
-        public async Task<ActionResult<PolizaGetResponse>> GetAsync([FromQuery] string usuarioId)
+        [Route("[controller]/{usuarioId}")]
+        public async Task<ActionResult<PolizaGetResponse>> GetAsync(string usuarioId)
         {
             try
             {
-                //PolizaGetResponse response = await _polizaService.();
-                return null;
+                PolizaGetResponse response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+                return response;
             }
             catch (DbException ex)
             {
