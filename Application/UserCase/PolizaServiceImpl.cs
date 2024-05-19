@@ -11,7 +11,6 @@ namespace Application.UserCase
 {
     public class PolizaServiceImpl : IPolizaService
     {
-        private IVersionRepository _versionRepository;
         private IGenericRepository _genericRepository;
         private IValidacionesRepository _validacionesRepository;
         private IPolizaRepository _polizaRepository;
@@ -30,7 +29,6 @@ namespace Application.UserCase
             _logger = logger;
             _mapper = mapper;
             _polizaRepository = polizaRepository;
-            _versionRepository = versionRepository;
         }
 
         public async Task<List<PolizaGetResponse>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
