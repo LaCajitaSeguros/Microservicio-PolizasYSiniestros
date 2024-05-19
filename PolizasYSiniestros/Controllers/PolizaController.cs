@@ -24,11 +24,11 @@ namespace PolizasYSiniestros.Controllers
 
         [HttpGet]
         [Route("[controller]/{usuarioId}")]
-        public async Task<ActionResult<PolizaGetResponse>> GetAsync(string usuarioId)
+        public async Task<ActionResult<List<PolizaGetResponse>>> GetAsync(string usuarioId)
         {
             try
             {
-                PolizaGetResponse response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+                List<PolizaGetResponse> response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
                 return response;
             }
             catch (DbException ex)

@@ -30,10 +30,16 @@ namespace Application.UserCase
             _polizaRepository = polizaRepository;
         }
 
-        public async Task<PolizaGetResponse> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
+        public async Task<List<PolizaGetResponse>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
         {
-            await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
-            return null;
+            List<PolizaGetResponse> response = new List<PolizaGetResponse>();
+            List<Poliza> polizas = await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+            foreach (Poliza poliza in polizas)
+            {
+                //Acá convertimos la Poliza en un polizaGetResponse
+                response.Add(_mapper.Map<PolizaGetResponse>(poliza));
+            }
+            return response;
         }
 
         public async Task<PolizaPostResponse> GuardarPolizaAsync(PolizaPostRequest polizaPostRequest)
