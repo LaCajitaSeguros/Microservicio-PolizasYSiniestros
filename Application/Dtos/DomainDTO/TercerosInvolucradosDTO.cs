@@ -2,7 +2,7 @@
 {
     public class TercerosInvolucradosDTO
     {
-        public string CompaniaDeSeguros { get; set; }
+        public string CompaniaDeSeguro { get; set; }
 
         public string Nombre { get; set; }
 
