@@ -21,6 +21,11 @@ namespace Application.ConfigMapper
             CreateMap<Poliza, PolizaPostResponse>()
             .ForMember(dest => dest.NumeroDePoliza, opt => opt.MapFrom(src => src.NroDePoliza))
             .ForMember(dest => dest.BienAsegurado, opt => opt.MapFrom(src => src.BienAsegurado));
+
+            CreateMap<Poliza, PolizaGetResponse>()
+            .ForMember(dest => dest.NumeroDePoliza, opt => opt.MapFrom(src => src.NroDePoliza))
+            .ForMember(dest => dest.BienAsegurado, opt => opt.MapFrom(src => src.BienAsegurado))
+            .ForMember(dest => dest.Siniestros, opt => opt.MapFrom(src => src.Siniestros));
         }
     }
 }

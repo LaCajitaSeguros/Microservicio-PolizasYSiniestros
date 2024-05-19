@@ -22,6 +22,25 @@ namespace PolizasYSiniestros.Controllers
             _polizaService = polizaService;
         }
 
+        [HttpGet]
+        [Route("[controller]/{usuarioId}")]
+        public async Task<ActionResult<List<PolizaGetResponse>>> GetAsync(string usuarioId)
+        {
+            try
+            {
+                List<PolizaGetResponse> response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+                return response;
+            }
+            catch (DbException ex)
+            {
+                return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message));
+            }
+            catch (CustomBadRequest e)
+            {
+                return Conflict(new ApiError(e.Message)); ;
+            }
+        }
+
         /// <summary>
         ///  Crea una nueva poliza..
         /// </summary>
