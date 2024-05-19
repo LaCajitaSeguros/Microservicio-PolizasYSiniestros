@@ -19,8 +19,8 @@ namespace Application.ConfigMapper
 
             CreateMap<SiniestroDTO, Siniestro>().ReverseMap()
                 .ForMember(dest => dest.Imagenes, opt => opt.Ignore());
-                //.ForMember(dest => dest.TercerosInvolucrados, opt => opt.Ignore());
-            
+            //.ForMember(dest => dest.TercerosInvolucrados, opt => opt.Ignore());
+
 
 
             CreateMap<SiniestroPostRequest, Siniestro>()
@@ -30,7 +30,7 @@ namespace Application.ConfigMapper
 
             CreateMap<Siniestro, SiniestroPostResponse>()
                 .ForMember(dest => dest.NumeroDeSiniestro, opt => opt.MapFrom(src => src.SiniestroId)).ReverseMap();
-                
+
         }
     }
 }
