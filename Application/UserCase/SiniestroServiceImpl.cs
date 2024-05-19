@@ -29,7 +29,15 @@ namespace Application.UserCase
             _mapper = mapper;
             _polizaRepository = polizaRepository;
         }
+        /*
+         Consigo el id por parametro
+        ese id, conseguir todas las polizas con ese id de usuario.
+        con esa lista de polizas, conseguimos todos los siniestros
 
+        *En la respuesta necesitamos utilizar otro endpoint para conseguir los planes de acuerdo al plan id de cada poliza.
+        *A partir de la id de la versión armar el vehículo en la respuesta.
+        *Armar las ubicaciones en base a la localidadId
+         */
         public async Task<SiniestroPostResponse> RegistrarSiniestroAsync(SiniestroPostRequest siniestroPostRequest)
         {
             _logger.LogInformation("Inicio - RegistrarSiniestroAsync");
