@@ -4,6 +4,7 @@ using Application.Dtos.Requets;
 using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Service;
+using Application.NuevosDtos.DomainDto;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
 using System.Net;
@@ -24,11 +25,11 @@ namespace PolizasYSiniestros.Controllers
 
         [HttpGet]
         [Route("[controller]/{usuarioId}")]
-        public async Task<ActionResult<List<PolizaGetResponse>>> GetAsync(string usuarioId)
+        public async Task<ActionResult<List<PolizaDto>>> GetAsync(string usuarioId)
         {
             try
             {
-                List<PolizaGetResponse> response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+                List<PolizaDto> response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
                 return response;
             }
             catch (DbException ex)

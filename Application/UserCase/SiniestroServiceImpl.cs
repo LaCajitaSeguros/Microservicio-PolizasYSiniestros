@@ -17,31 +17,28 @@ namespace Application.UserCase
         private ILogger<PolizaServiceImpl> _logger;
         private IMapper _mapper;
         private IPolizaRepository _polizaRepository;
+        private IVersionRepository _versionRepository;
 
         public SiniestroServiceImpl(IGenericRepository genericRepository,
                                     ILogger<PolizaServiceImpl> logger,
                                     IMapper mapper,
                                     IValidacionesRepository validacionesRepository,
-                                    IPolizaRepository polizaRepository)
+                                    IPolizaRepository polizaRepository,
+                                    IVersionRepository versionRepository)
         {
             _genericRepository = genericRepository;
             _logger = logger;
             _mapper = mapper;
             _polizaRepository = polizaRepository;
+            _versionRepository = versionRepository;
         }
-        /*
-         Consigo el id por parametro
-        ese id, conseguir todas las polizas con ese id de usuario.
-        con esa lista de polizas, conseguimos todos los siniestros
 
-        *En la respuesta necesitamos utilizar otro endpoint para conseguir los planes de acuerdo al plan id de cada poliza.
-        *A partir de la id de la versión armar el vehículo en la respuesta.
-        *Armar las ubicaciones en base a la localidadId
-         */
+
         public async Task<SiniestroPostResponse> RegistrarSiniestroAsync(SiniestroPostRequest siniestroPostRequest)
         {
             _logger.LogInformation("Inicio - RegistrarSiniestroAsync");
 
+            //VersionVehiculo vehiculo = await _versionRepository.BuscarVersionPorVersionIdAsync(1);
             Poliza poliza = await _polizaRepository.BuscarPolizaPorNroPoliza(siniestroPostRequest.NroDePoliza);
 
             if (poliza == null)
