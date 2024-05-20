@@ -5,7 +5,9 @@ using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
+using Application.NuevosDtos.DomainDto;
 using AutoMapper;
+using Domain.Entities;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
 
@@ -17,17 +19,20 @@ namespace Application.UserCase
         private ILogger<PolizaServiceImpl> _logger;
         private IMapper _mapper;
         private IPolizaRepository _polizaRepository;
+        private IVersionRepository _versionRepository;
 
         public SiniestroServiceImpl(IGenericRepository genericRepository,
                                     ILogger<PolizaServiceImpl> logger,
                                     IMapper mapper,
                                     IValidacionesRepository validacionesRepository,
-                                    IPolizaRepository polizaRepository)
+                                    IPolizaRepository polizaRepository,
+                                    IVersionRepository versionRepository)
         {
             _genericRepository = genericRepository;
             _logger = logger;
             _mapper = mapper;
             _polizaRepository = polizaRepository;
+            _versionRepository = versionRepository;
         }
         /*
          Consigo el id por parametro
@@ -42,6 +47,7 @@ namespace Application.UserCase
         {
             _logger.LogInformation("Inicio - RegistrarSiniestroAsync");
 
+            //VersionVehiculo vehiculo = await _versionRepository.BuscarVersionPorVersionIdAsync(1);
             Poliza poliza = await _polizaRepository.BuscarPolizaPorNroPoliza(siniestroPostRequest.NroDePoliza);
 
             if (poliza == null)
