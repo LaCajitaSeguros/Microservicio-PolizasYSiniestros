@@ -97,5 +97,32 @@ namespace Application.UserCase
             _logger.LogInformation("Fin - GuardarPolizaAsync");
             return response;
         }
+
+        public async Task<List<PolizaDto>> BuscarPolizasPorUsuarioId(string usuarioId)
+        {
+            List<PolizaDto> response = new List<PolizaDto>();
+
+            List<Poliza> polizas = await _polizaRepository.BuscarPolizasPorUsuarioId(usuarioId);
+
+            foreach (Poliza poliza in polizas)
+            {
+                // Convertimos la Poliza en un PolizaDto
+                var polizaDto = _mapper.Map<PolizaDto>(poliza);
+
+                polizaDto.Plan = await _httpService.GetAsync<PlanDTO>($"https://localhost:7272/api/Planes/BuscarPlan?Id={poliza.PlanId}");
+
+                // Mapear las ubicaciones y versiones de los bienes asegurados
+                polizaDto.BienAsegurado = await _formateoUbicacionService.MapearUbicacionBienAsegurado(poliza.BienAsegurado);
+                polizaDto.BienAsegurado.version = await _formateoVehiculoVersionService.MapearVehiculoVersion(poliza.BienAsegurado.VersionId);
+
+                // Mapear las ubicaciones de los siniestros
+                polizaDto.Siniestros = await _formateoUbicacionService.MapearUbicacionSiniestros(poliza.Siniestros.ToList());
+
+                // Agregar el PolizaDto a la respuesta
+                response.Add(polizaDto);
+            }
+
+            return response;
+        }
     }
 }

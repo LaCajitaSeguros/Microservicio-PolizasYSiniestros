@@ -34,6 +34,14 @@ namespace Infraestructure.Querys
                                                             .Where(p => p.UsuarioId == usuarioId).ToListAsync();
             return polizasEncontradas;
         }
+
+        public async Task<List<Poliza>> BuscarPolizasPorUsuarioId(string usuarioId)
+        {
+            List<Poliza> polizas = await _context.Poliza                                                            
+                                                 .Include(p => p.BienAsegurado).ThenInclude(ba => ba.Ubicacion)
+                                                 .Where(p => p.UsuarioId == usuarioId).ToListAsync();
+            return polizas;            
+        }
     }
 }
 

@@ -73,5 +73,24 @@ namespace PolizasYSiniestros.Controllers
                 return Conflict(new ApiError(e.Message)); ;
             }
         }
+
+        [HttpGet]
+        [Route("[controller]/BuscarPolizasPorUsuario/{usuarioId}")]
+        public async Task<ActionResult<List<PolizaDto>>> BuscarPolizasPorUsuario(string usuarioId)
+        {
+            try
+            {
+                List<PolizaDto> response = await _polizaService.BuscarPolizasPorUsuarioId(usuarioId);
+                return response;
+            }
+            catch (DbException ex)
+            {
+                return StatusCode(500, new ApiError("Ocurrió un error al consultar la base de datos -->  " + ex.Message));
+            }
+            catch (CustomBadRequest e)
+            {
+                return Conflict(new ApiError(e.Message)); ;
+            }
+        }
     }
 }

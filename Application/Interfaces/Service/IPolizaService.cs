@@ -10,5 +10,8 @@ namespace Application.Interfaces.Service
         //public Task<List<PolizaGetResponse>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId);
 
         public Task<List<PolizaDto>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId);
+
+        public Task<List<PolizaDto>> BuscarPolizasPorUsuarioId(string usuarioId);
+
     }
 }

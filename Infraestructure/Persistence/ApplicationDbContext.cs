@@ -19,8 +19,7 @@ namespace Infraestructure
         public DbSet<SiniestroTipoDeSiniestro> SiniestroTipoDeSiniestro { get; set; }
         public DbSet<Provincia> Provincia { get; set; }
         public DbSet<Localidad> Localidad { get; set; }
-
-
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
