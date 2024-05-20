@@ -7,11 +7,24 @@
 namespace Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class DbPolizaYSiniestros : Migration
+    public partial class DbPolizasYSiniestros : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Localidad",
+                columns: table => new
+                {
+                    ProvinciaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Localidad", x => x.ProvinciaId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Marca",
                 columns: table => new
@@ -23,6 +36,19 @@ namespace Infraestructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Marca", x => x.MarcaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Provincia",
+                columns: table => new
+                {
+                    ProvinciaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Provincia", x => x.ProvinciaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -226,6 +252,43 @@ namespace Infraestructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Localidad",
+                columns: new[] { "ProvinciaId", "Nombre" },
+                values: new object[,]
+                {
+                    { 1, "Morón" },
+                    { 2, "San Justo" },
+                    { 3, "San Martín" },
+                    { 4, "Quilmes" },
+                    { 5, "Lanús" },
+                    { 6, "Avellaneda" },
+                    { 7, "Vicente López" },
+                    { 8, "San Isidro" },
+                    { 9, "Tigre" },
+                    { 10, "San Fernando" },
+                    { 11, "Pilar" },
+                    { 12, "Escobar" },
+                    { 13, "Moreno" },
+                    { 14, "Lomas de Zamora" },
+                    { 15, "Adrogué" },
+                    { 16, "Banfield" },
+                    { 17, "Temperley" },
+                    { 18, "Hurlingham" },
+                    { 19, "Ituzaingó" },
+                    { 20, "Castelar" },
+                    { 21, "Ramos Mejía" },
+                    { 22, "Merlo" },
+                    { 23, "Ezeiza" },
+                    { 24, "Berazategui" },
+                    { 25, "Florencio Varela" },
+                    { 26, "General Rodríguez" },
+                    { 27, "Villa Ballester" },
+                    { 28, "Bella Vista" },
+                    { 29, "Ciudadela" },
+                    { 30, "Quilmes" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Marca",
                 columns: new[] { "MarcaId", "NombreMarca" },
                 values: new object[,]
@@ -233,6 +296,37 @@ namespace Infraestructure.Migrations
                     { 1, "Fiat" },
                     { 2, "Ford" },
                     { 3, "BMW" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Provincia",
+                columns: new[] { "ProvinciaId", "Nombre" },
+                values: new object[,]
+                {
+                    { 31, "Buenos Aires" },
+                    { 32, "CABA" },
+                    { 33, "Catamarca" },
+                    { 34, "Chaco" },
+                    { 35, "Chubut" },
+                    { 36, "Córdoba" },
+                    { 37, "Corrientes" },
+                    { 38, "Entre Ríos" },
+                    { 39, "Formosa" },
+                    { 40, "Jujuy" },
+                    { 41, "La Pampa" },
+                    { 42, "La Rioja" },
+                    { 43, "Mendoza" },
+                    { 44, "Misiones" },
+                    { 45, "Neuquén" },
+                    { 46, "Río Negro" },
+                    { 47, "Salta" },
+                    { 48, "San Juan" },
+                    { 49, "San Luis" },
+                    { 50, "Santa Cruz" },
+                    { 51, "Santa Fe" },
+                    { 52, "Santiago del Estero" },
+                    { 53, "Tierra del Fuego" },
+                    { 54, "Tucumán" }
                 });
 
             migrationBuilder.InsertData(
@@ -349,6 +443,12 @@ namespace Infraestructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Localidad");
+
+            migrationBuilder.DropTable(
+                name: "Provincia");
+
             migrationBuilder.DropTable(
                 name: "SiniestroTipoDeSiniestro");
 

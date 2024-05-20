@@ -393,6 +393,175 @@ namespace Infraestructure.Migrations
                     b.ToTable("BienAsegurado");
                 });
 
+            modelBuilder.Entity("Domain.Entitys.Localidad", b =>
+                {
+                    b.Property<int>("ProvinciaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProvinciaId"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProvinciaId");
+
+                    b.ToTable("Localidad");
+
+                    b.HasData(
+                        new
+                        {
+                            ProvinciaId = 1,
+                            Nombre = "Morón"
+                        },
+                        new
+                        {
+                            ProvinciaId = 2,
+                            Nombre = "San Justo"
+                        },
+                        new
+                        {
+                            ProvinciaId = 3,
+                            Nombre = "San Martín"
+                        },
+                        new
+                        {
+                            ProvinciaId = 4,
+                            Nombre = "Quilmes"
+                        },
+                        new
+                        {
+                            ProvinciaId = 5,
+                            Nombre = "Lanús"
+                        },
+                        new
+                        {
+                            ProvinciaId = 6,
+                            Nombre = "Avellaneda"
+                        },
+                        new
+                        {
+                            ProvinciaId = 7,
+                            Nombre = "Vicente López"
+                        },
+                        new
+                        {
+                            ProvinciaId = 8,
+                            Nombre = "San Isidro"
+                        },
+                        new
+                        {
+                            ProvinciaId = 9,
+                            Nombre = "Tigre"
+                        },
+                        new
+                        {
+                            ProvinciaId = 10,
+                            Nombre = "San Fernando"
+                        },
+                        new
+                        {
+                            ProvinciaId = 11,
+                            Nombre = "Pilar"
+                        },
+                        new
+                        {
+                            ProvinciaId = 12,
+                            Nombre = "Escobar"
+                        },
+                        new
+                        {
+                            ProvinciaId = 13,
+                            Nombre = "Moreno"
+                        },
+                        new
+                        {
+                            ProvinciaId = 14,
+                            Nombre = "Lomas de Zamora"
+                        },
+                        new
+                        {
+                            ProvinciaId = 15,
+                            Nombre = "Adrogué"
+                        },
+                        new
+                        {
+                            ProvinciaId = 16,
+                            Nombre = "Banfield"
+                        },
+                        new
+                        {
+                            ProvinciaId = 17,
+                            Nombre = "Temperley"
+                        },
+                        new
+                        {
+                            ProvinciaId = 18,
+                            Nombre = "Hurlingham"
+                        },
+                        new
+                        {
+                            ProvinciaId = 19,
+                            Nombre = "Ituzaingó"
+                        },
+                        new
+                        {
+                            ProvinciaId = 20,
+                            Nombre = "Castelar"
+                        },
+                        new
+                        {
+                            ProvinciaId = 21,
+                            Nombre = "Ramos Mejía"
+                        },
+                        new
+                        {
+                            ProvinciaId = 22,
+                            Nombre = "Merlo"
+                        },
+                        new
+                        {
+                            ProvinciaId = 23,
+                            Nombre = "Ezeiza"
+                        },
+                        new
+                        {
+                            ProvinciaId = 24,
+                            Nombre = "Berazategui"
+                        },
+                        new
+                        {
+                            ProvinciaId = 25,
+                            Nombre = "Florencio Varela"
+                        },
+                        new
+                        {
+                            ProvinciaId = 26,
+                            Nombre = "General Rodríguez"
+                        },
+                        new
+                        {
+                            ProvinciaId = 27,
+                            Nombre = "Villa Ballester"
+                        },
+                        new
+                        {
+                            ProvinciaId = 28,
+                            Nombre = "Bella Vista"
+                        },
+                        new
+                        {
+                            ProvinciaId = 29,
+                            Nombre = "Ciudadela"
+                        },
+                        new
+                        {
+                            ProvinciaId = 30,
+                            Nombre = "Quilmes"
+                        });
+                });
+
             modelBuilder.Entity("Domain.Entitys.Poliza", b =>
                 {
                     b.Property<int>("PolizaId")
@@ -430,6 +599,145 @@ namespace Infraestructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Poliza");
+                });
+
+            modelBuilder.Entity("Domain.Entitys.Provincia", b =>
+                {
+                    b.Property<int>("ProvinciaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProvinciaId"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProvinciaId");
+
+                    b.ToTable("Provincia");
+
+                    b.HasData(
+                        new
+                        {
+                            ProvinciaId = 31,
+                            Nombre = "Buenos Aires"
+                        },
+                        new
+                        {
+                            ProvinciaId = 32,
+                            Nombre = "CABA"
+                        },
+                        new
+                        {
+                            ProvinciaId = 33,
+                            Nombre = "Catamarca"
+                        },
+                        new
+                        {
+                            ProvinciaId = 34,
+                            Nombre = "Chaco"
+                        },
+                        new
+                        {
+                            ProvinciaId = 35,
+                            Nombre = "Chubut"
+                        },
+                        new
+                        {
+                            ProvinciaId = 36,
+                            Nombre = "Córdoba"
+                        },
+                        new
+                        {
+                            ProvinciaId = 37,
+                            Nombre = "Corrientes"
+                        },
+                        new
+                        {
+                            ProvinciaId = 38,
+                            Nombre = "Entre Ríos"
+                        },
+                        new
+                        {
+                            ProvinciaId = 39,
+                            Nombre = "Formosa"
+                        },
+                        new
+                        {
+                            ProvinciaId = 40,
+                            Nombre = "Jujuy"
+                        },
+                        new
+                        {
+                            ProvinciaId = 41,
+                            Nombre = "La Pampa"
+                        },
+                        new
+                        {
+                            ProvinciaId = 42,
+                            Nombre = "La Rioja"
+                        },
+                        new
+                        {
+                            ProvinciaId = 43,
+                            Nombre = "Mendoza"
+                        },
+                        new
+                        {
+                            ProvinciaId = 44,
+                            Nombre = "Misiones"
+                        },
+                        new
+                        {
+                            ProvinciaId = 45,
+                            Nombre = "Neuquén"
+                        },
+                        new
+                        {
+                            ProvinciaId = 46,
+                            Nombre = "Río Negro"
+                        },
+                        new
+                        {
+                            ProvinciaId = 47,
+                            Nombre = "Salta"
+                        },
+                        new
+                        {
+                            ProvinciaId = 48,
+                            Nombre = "San Juan"
+                        },
+                        new
+                        {
+                            ProvinciaId = 49,
+                            Nombre = "San Luis"
+                        },
+                        new
+                        {
+                            ProvinciaId = 50,
+                            Nombre = "Santa Cruz"
+                        },
+                        new
+                        {
+                            ProvinciaId = 51,
+                            Nombre = "Santa Fe"
+                        },
+                        new
+                        {
+                            ProvinciaId = 52,
+                            Nombre = "Santiago del Estero"
+                        },
+                        new
+                        {
+                            ProvinciaId = 53,
+                            Nombre = "Tierra del Fuego"
+                        },
+                        new
+                        {
+                            ProvinciaId = 54,
+                            Nombre = "Tucumán"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entitys.Siniestro", b =>

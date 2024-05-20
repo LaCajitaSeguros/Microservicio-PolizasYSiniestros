@@ -1,8 +1,10 @@
-﻿using Application.Dtos.Requets;
+﻿using Application.Dtos.DomainDTO;
+using Application.Dtos.Requets;
 using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
+using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
@@ -14,6 +16,10 @@ namespace Application.UserCase
         private IGenericRepository _genericRepository;
         private IValidacionesRepository _validacionesRepository;
         private IPolizaRepository _polizaRepository;
+        private IFormateoUbicacionService _formateoUbicacionService;
+        public IFormateoVehiculoVersionService _formateoVehiculoVersionService;
+        public IHttpServer _httpService;
+
         private ILogger<PolizaServiceImpl> _logger;
         private IMapper _mapper;
 
@@ -21,26 +27,49 @@ namespace Application.UserCase
                                  ILogger<PolizaServiceImpl> logger,
                                  IMapper mapper,
                                  IValidacionesRepository validacionesRepository,
-                                 IPolizaRepository polizaRepository)
+                                 IPolizaRepository polizaRepository,
+                                 IFormateoUbicacionService formateoUbicacionService,
+                                 IFormateoVehiculoVersionService formateoVehiculoVersionService,
+                                 IHttpServer httpServer)
         {
             _genericRepository = genericRepository;
             _validacionesRepository = validacionesRepository;
             _logger = logger;
             _mapper = mapper;
             _polizaRepository = polizaRepository;
+            _formateoUbicacionService = formateoUbicacionService;
+            _formateoVehiculoVersionService = formateoVehiculoVersionService;
+            _httpService = httpServer;
         }
 
-        public async Task<List<PolizaGetResponse>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
+        public async Task<List<PolizaDto>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
         {
-            List<PolizaGetResponse> response = new List<PolizaGetResponse>();
+            List<PolizaDto> response = new List<PolizaDto>();
+
             List<Poliza> polizas = await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+
+
             foreach (Poliza poliza in polizas)
             {
-                //Acá convertimos la Poliza en un polizaGetResponse
-                response.Add(_mapper.Map<PolizaGetResponse>(poliza));
+                // Convertimos la Poliza en un PolizaDto
+                var polizaDto = _mapper.Map<PolizaDto>(poliza);
+
+                polizaDto.Plan = await _httpService.GetAsync<PlanDTO>($"https://localhost:7272/api/Planes/BuscarPlan?Id={poliza.PlanId}");
+
+                // Mapear las ubicaciones y versiones de los bienes asegurados
+                polizaDto.BienAsegurado = await _formateoUbicacionService.MapearUbicacionBienAsegurado(poliza.BienAsegurado);
+                polizaDto.BienAsegurado.version = await _formateoVehiculoVersionService.MapearVehiculoVersion(poliza.BienAsegurado.VersionId);
+
+                // Mapear las ubicaciones de los siniestros
+                polizaDto.Siniestros = await _formateoUbicacionService.MapearUbicacionSiniestros(poliza.Siniestros.ToList());
+
+                // Agregar el PolizaDto a la respuesta
+                response.Add(polizaDto);
             }
+
             return response;
         }
+
 
         public async Task<PolizaPostResponse> GuardarPolizaAsync(PolizaPostRequest polizaPostRequest)
         {

@@ -17,12 +17,14 @@ namespace Infraestructure
         public DbSet<Tercero> Tercero { get; set; }
         public DbSet<TipoDeSiniestro> TipoDeSiniestro { get; set; }
         public DbSet<SiniestroTipoDeSiniestro> SiniestroTipoDeSiniestro { get; set; }
+        public DbSet<Provincia> Provincia { get; set; }
+        public DbSet<Localidad> Localidad { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
 
             modelBuilder.Entity<VersionVehiculo>()
                 .HasOne<Modelo>(vv => vv.Modelo)
@@ -131,6 +133,8 @@ namespace Infraestructure
             modelBuilder.ApplyConfiguration(new ModeloConfiguracion());
             modelBuilder.ApplyConfiguration(new VersionConfiguracion());
             modelBuilder.ApplyConfiguration(new TipoSiniestroConfiguracion());
+            modelBuilder.ApplyConfiguration(new ProvinciaConfiguracion());
+            modelBuilder.ApplyConfiguration(new LocalidadConfiguracion());
         }
     }
 }

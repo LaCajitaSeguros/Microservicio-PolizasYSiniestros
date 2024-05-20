@@ -56,7 +56,13 @@ namespace PolizasYSiniestros
             builder.Services.AddTransient<IValidacionesRepository, ValidacionesRepositoryImpl>();
             builder.Services.AddTransient<ISiniestroService, SiniestroServiceImpl>();
             builder.Services.AddTransient<IPolizaRepository, PolizaRepositoryImpl>();
-
+            builder.Services.AddTransient<IVersionRepository, VersionRepositoryImpl>();
+            builder.Services.AddTransient<IProviciaRepository, ProvinciaRepositoryImpl>();
+            builder.Services.AddTransient<ILocalidadRepository, LocalidaRepositoryImpl>();
+            builder.Services.AddTransient<IFormateoUbicacionService, FormateoUbicacionService>();
+            builder.Services.AddTransient<IFormateoVehiculoVersionService, FormateoVehiculoVersionServiceImpl>();
+            builder.Services.AddScoped<HttpClient, HttpClient>();
+            builder.Services.AddTransient<IHttpServer, HttpServiceImpl>();
 
 
             var app = builder.Build();

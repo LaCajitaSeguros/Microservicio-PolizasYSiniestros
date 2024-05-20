@@ -25,7 +25,7 @@ namespace Infraestructure.Querys
         {
             List<Poliza> polizasEncontradas = await _context.Poliza
                                                             .Include(p => p.Siniestros)
-                                                            .Include(p => p.BienAsegurado)
+                                                            .Include(p => p.BienAsegurado).ThenInclude(ba => ba.Ubicacion)
                                                             .Include(p => p.Siniestros).ThenInclude(s => s.TercerosInvolucrados)
                                                             .Include(p => p.Siniestros).ThenInclude(s => s.Ubicacion)
                                                             .Include(p => p.Siniestros).ThenInclude(S => S.SiniestroTipoDeSiniestros)
