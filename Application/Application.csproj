@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Dtos\Response\Poliza\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="NuevosDtos\Request\" />
   </ItemGroup>
 
