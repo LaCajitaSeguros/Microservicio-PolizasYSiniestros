@@ -55,7 +55,7 @@ namespace Application.UserCase
                 siniestroDto.Imagenes = ImagenMapper.ImagenStringAImagenDTO(siniestro.Imagenes);
 
                 //Mapeo de TipoDeSiniestro
-                siniestroDto.TipoDeSiniestros = TipoDeSiniestroMapper.SiniestroTipoDeSiniestroATipoDeSiniestro(siniestro.SiniestroTipoDeSiniestros);
+                siniestroDto.TipoDeSiniestros = TipoDeSiniestroMapper.SiniestroTipoDeSiniestroATipoDeSiniestro1(siniestro.SiniestroTipoDeSiniestros);
 
 
                 var localidad = await _localidadRepository.BuscarLocalidadPorIdAsync(siniestro.Ubicacion.LocalidadId);
