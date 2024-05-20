@@ -1,4 +1,5 @@
-﻿using Application.Dtos.Requets;
+﻿using Application.Dtos.DomainDTO;
+using Application.Dtos.Requets;
 using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
@@ -17,6 +18,7 @@ namespace Application.UserCase
         private IPolizaRepository _polizaRepository;
         private IFormateoUbicacionService _formateoUbicacionService;
         public IFormateoVehiculoVersionService _formateoVehiculoVersionService;
+        public IHttpServer _httpService;
 
         private ILogger<PolizaServiceImpl> _logger;
         private IMapper _mapper;
@@ -27,7 +29,8 @@ namespace Application.UserCase
                                  IValidacionesRepository validacionesRepository,
                                  IPolizaRepository polizaRepository,
                                  IFormateoUbicacionService formateoUbicacionService,
-                                 IFormateoVehiculoVersionService formateoVehiculoVersionService)
+                                 IFormateoVehiculoVersionService formateoVehiculoVersionService,
+                                 IHttpServer httpServer)
         {
             _genericRepository = genericRepository;
             _validacionesRepository = validacionesRepository;
@@ -36,6 +39,7 @@ namespace Application.UserCase
             _polizaRepository = polizaRepository;
             _formateoUbicacionService = formateoUbicacionService;
             _formateoVehiculoVersionService = formateoVehiculoVersionService;
+            _httpService = httpServer;
         }
 
         public async Task<List<PolizaDto>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
@@ -44,10 +48,13 @@ namespace Application.UserCase
 
             List<Poliza> polizas = await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
 
+
             foreach (Poliza poliza in polizas)
             {
                 // Convertimos la Poliza en un PolizaDto
                 var polizaDto = _mapper.Map<PolizaDto>(poliza);
+
+                polizaDto.Plan = await _httpService.GetAsync<PlanDTO>($"https://localhost:7272/api/Planes/BuscarPlan?Id={poliza.PlanId}");
 
                 // Mapear las ubicaciones y versiones de los bienes asegurados
                 polizaDto.BienAsegurado = await _formateoUbicacionService.MapearUbicacionBienAsegurado(poliza.BienAsegurado);
