@@ -13,7 +13,7 @@ namespace Application.NuevosDtos.DomainDto
 
         public BienAseguradoDto BienAsegurado { get; set; }
 
-        List<SiniestroDto>  Siniestros { get; set; }
+        public List<SiniestroDto> Siniestros { get; set; }
 
     }
 }

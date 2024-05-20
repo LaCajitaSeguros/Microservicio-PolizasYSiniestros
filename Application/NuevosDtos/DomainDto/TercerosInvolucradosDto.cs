@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.NuevosDtos.DomainDto
+﻿namespace Application.NuevosDtos.DomainDto
 {
     public class TercerosInvolucradosDto
     {
@@ -14,6 +8,6 @@ namespace Application.NuevosDtos.DomainDto
 
         public string Patente { get; set; }
 
-        public UbicacionDto Ubicacion { get; set;}
+        public UbicacionDto Ubicacion { get; set; }
     }
 }

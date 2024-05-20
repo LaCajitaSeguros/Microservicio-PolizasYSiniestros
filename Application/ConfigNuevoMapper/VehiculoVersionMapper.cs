@@ -1,11 +1,6 @@
-﻿using Application.Dtos.DomainDTO;
-using Application.Dtos.Requets;
-using Application.Dtos.Response;
-using Application.NuevosDtos.DomainDto;
+﻿using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 using Domain.Entities;
-using Domain.Entitys;
-using System;
 namespace Application.ConfigNuevoMapper
 {
     public class VehiculoVersionMapper : Profile

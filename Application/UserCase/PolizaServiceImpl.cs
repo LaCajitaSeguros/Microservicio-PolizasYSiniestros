@@ -3,6 +3,7 @@ using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
+using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
@@ -31,17 +32,16 @@ namespace Application.UserCase
             _polizaRepository = polizaRepository;
         }
 
-        public async Task<List<PolizaGetResponse>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
+        public async Task<List<PolizaDto>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
         {
 
-
-            List<PolizaGetResponse> response = new List<PolizaGetResponse>();
+            List<PolizaDto> response = new List<PolizaDto>();
 
             List<Poliza> polizas = await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
             foreach (Poliza poliza in polizas)
             {
                 //Acá convertimos la Poliza en un polizaGetResponse
-                response.Add(_mapper.Map<PolizaGetResponse>(poliza));
+                response.Add(_mapper.Map<PolizaDto>(poliza));
             }
             return response;
         }

@@ -7,10 +7,10 @@ namespace Application.NuevosDtos.DomainDto
     {
         public int SiniestroId { get; set; }
         public TipoSiniestroDTO TipoDeSiniestros { get; set; }
-        
-        public UbicacionDto Ubicacion { get; set;}
 
-        public List<TercerosInvolucradosDto> TercerosInvolucrados { get; set; } 
+        public UbicacionDto Ubicacion { get; set; }
+
+        public List<TercerosInvolucradosDto> TercerosInvolucrados { get; set; }
 
     }
 }

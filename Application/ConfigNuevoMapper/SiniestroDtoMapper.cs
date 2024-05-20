@@ -1,11 +1,6 @@
 ﻿using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 using Domain.Entitys;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.ConfigNuevoMapper
 {
@@ -19,6 +14,6 @@ namespace Application.ConfigNuevoMapper
             .ForMember(dest => dest.Ubicacion, opt => opt.MapFrom(src => src.Ubicacion))
             .ReverseMap();
         }
-    
+
     }
 }

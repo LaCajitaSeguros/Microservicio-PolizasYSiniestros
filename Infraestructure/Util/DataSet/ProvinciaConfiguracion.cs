@@ -6,7 +6,8 @@ namespace Infraestructure.Util.DataSet
 {
     public class ProvinciaConfiguracion : IEntityTypeConfiguration<Provincia>
     {
-        public void Configure(EntityTypeBuilder<Provincia> builder) {
+        public void Configure(EntityTypeBuilder<Provincia> builder)
+        {
 
             builder.HasData(
                 new Localidad { ProvinciaId = 31, Nombre = "Buenos Aires" },
@@ -38,5 +39,5 @@ namespace Infraestructure.Util.DataSet
     }
 }
 
-    
-    
+
+

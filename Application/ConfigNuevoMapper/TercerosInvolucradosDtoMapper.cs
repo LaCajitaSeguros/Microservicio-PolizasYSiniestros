@@ -1,12 +1,6 @@
-﻿using Application.Dtos.DomainDTO;
-using Application.NuevosDtos.DomainDto;
+﻿using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 using Domain.Entitys;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.ConfigNuevoMapper
 {

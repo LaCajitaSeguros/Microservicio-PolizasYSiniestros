@@ -17,7 +17,7 @@ namespace Infraestructure.Querys
         public async Task<Localidad> BuscarLocalidadPorIdAsync(int localidadId)
         {
 
-            var localidad = await _context.Localidad.FirstOrDefaultAsync(l => localidadId  == localidadId);
+            var localidad = await _context.Localidad.FirstOrDefaultAsync(l => localidadId == localidadId);
 
             return localidad;
         }
