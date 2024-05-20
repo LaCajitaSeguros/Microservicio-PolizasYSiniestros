@@ -6,7 +6,8 @@ namespace Application.NuevosDtos.DomainDto
     public class SiniestroDto
     {
         public int SiniestroId { get; set; }
-        public TipoSiniestroDTO TipoDeSiniestros { get; set; }
+        public List<TipoSiniestroDTO> TipoDeSiniestros { get; set; }
+        public List<ImagenDTO> Imagenes { get; set; }
 
         public UbicacionDto Ubicacion { get; set; }
 

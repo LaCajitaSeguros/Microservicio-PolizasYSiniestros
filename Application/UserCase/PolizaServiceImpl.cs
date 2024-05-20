@@ -42,67 +42,27 @@ namespace Application.UserCase
         {
             List<PolizaDto> response = new List<PolizaDto>();
 
-            List<Siniestro> ListSiniestro = new List<Siniestro>();
-            List<Tercero> ListTercerosInvolucrados = new List<Tercero>();
-
             List<Poliza> polizas = await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
 
             foreach (Poliza poliza in polizas)
             {
-                ListSiniestro = poliza.Siniestros.ToList();
+                // Convertimos la Poliza en un PolizaDto
+                var polizaDto = _mapper.Map<PolizaDto>(poliza);
 
-                //Acá convertimos la Poliza en un polizaGetResponse
-                response.Add(_mapper.Map<PolizaDto>(poliza));
+                // Mapear las ubicaciones y versiones de los bienes asegurados
+                polizaDto.BienAsegurado = await _formateoUbicacionService.MapearUbicacionBienAsegurado(poliza.BienAsegurado);
+                polizaDto.BienAsegurado.version = await _formateoVehiculoVersionService.MapearVehiculoVersion(poliza.BienAsegurado.VersionId);
 
-                foreach (PolizaDto polizaDto in response)
-                {
-                    polizaDto.BienAsegurado = await _formateoUbicacionService.MapearUbicacionBienAsegurado(poliza.BienAsegurado);
-                    polizaDto.BienAsegurado.version = await _formateoVehiculoVersionService.MapearVehiculoVersion(poliza.BienAsegurado.VersionId);
-                }
+                // Mapear las ubicaciones de los siniestros
+                polizaDto.Siniestros = await _formateoUbicacionService.MapearUbicacionSiniestros(poliza.Siniestros.ToList());
 
+                // Agregar el PolizaDto a la respuesta
+                response.Add(polizaDto);
             }
-
-
-            polizas.ForEach(poliza =>
-            {
-                // Mapeamos el plan
-                poliza.Siniestros.ToList().ForEach(siniestroDto =>
-                {
-                    // Mapeamos las ubicaciones de los siniestro
-
-
-                    siniestroDto.TercerosInvolucrados.ToList().ForEach(tercero =>
-                    {
-                        // Mapeamos las ubicaciones de los terceros
-
-
-                    });
-                });
-            });
-
-            /*
-            foreach (Poliza poliza in polizas)
-            {
-                //Mapeamos el plan
-
-
-                foreach(Siniestro siniestroDto in poliza.Siniestros)
-                {
-                    //Mapeamos las ubicaciones de los siniestro     
-                    
-                    foreach( Tercero tercero  in siniestroDto.TercerosInvolucrados)
-                    {
-
-                        //Mapeamos las ubicaciones de los  terceros
-
-                    }
-
-                }
-            }*/
-
 
             return response;
         }
+
 
         public async Task<PolizaPostResponse> GuardarPolizaAsync(PolizaPostRequest polizaPostRequest)
         {

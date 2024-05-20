@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces.Repository;
 using Domain.Entitys;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructure.Querys
 {
@@ -17,7 +16,7 @@ namespace Infraestructure.Querys
         public async Task<Localidad> BuscarLocalidadPorIdAsync(int localidadId)
         {
 
-            var localidad = await _context.Localidad.FirstOrDefaultAsync(l => localidadId == localidadId);
+            Localidad localidad = await _context.Localidad.FindAsync(localidadId);
 
             return localidad;
         }
