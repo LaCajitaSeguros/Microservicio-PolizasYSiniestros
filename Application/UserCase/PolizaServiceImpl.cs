@@ -94,6 +94,12 @@ namespace Application.UserCase
 
             PolizaPostResponse response = _mapper.Map<PolizaPostResponse>(polizaGuardada);
 
+            response.Plan = await _httpService.GetAsync<PlanDTO>($"https://localhost:7272/api/Planes/BuscarPlan?Id={polizaPostRequest.PlanId}");
+
+            response.BienAsegurado = await _formateoUbicacionService.MapearUbicacionBienAsegurado(poliza.BienAsegurado);
+            response.BienAsegurado.version = await _formateoVehiculoVersionService.MapearVehiculoVersion(poliza.BienAsegurado.VersionId);
+
+
             _logger.LogInformation("Fin - GuardarPolizaAsync");
             return response;
         }

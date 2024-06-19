@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -16,13 +17,13 @@ namespace Infraestructure.Migrations
                 name: "Localidad",
                 columns: table => new
                 {
-                    ProvinciaId = table.Column<int>(type: "int", nullable: false)
+                    LocalidadId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Localidad", x => x.ProvinciaId);
+                    table.PrimaryKey("PK_Localidad", x => x.LocalidadId);
                 });
 
             migrationBuilder.CreateTable(
@@ -253,7 +254,7 @@ namespace Infraestructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Localidad",
-                columns: new[] { "ProvinciaId", "Nombre" },
+                columns: new[] { "LocalidadId", "Nombre" },
                 values: new object[,]
                 {
                     { 1, "Morón" },
@@ -284,8 +285,7 @@ namespace Infraestructure.Migrations
                     { 26, "General Rodríguez" },
                     { 27, "Villa Ballester" },
                     { 28, "Bella Vista" },
-                    { 29, "Ciudadela" },
-                    { 30, "Quilmes" }
+                    { 29, "Ciudadela" }
                 });
 
             migrationBuilder.InsertData(
@@ -301,33 +301,7 @@ namespace Infraestructure.Migrations
             migrationBuilder.InsertData(
                 table: "Provincia",
                 columns: new[] { "ProvinciaId", "Nombre" },
-                values: new object[,]
-                {
-                    { 31, "Buenos Aires" },
-                    { 32, "CABA" },
-                    { 33, "Catamarca" },
-                    { 34, "Chaco" },
-                    { 35, "Chubut" },
-                    { 36, "Córdoba" },
-                    { 37, "Corrientes" },
-                    { 38, "Entre Ríos" },
-                    { 39, "Formosa" },
-                    { 40, "Jujuy" },
-                    { 41, "La Pampa" },
-                    { 42, "La Rioja" },
-                    { 43, "Mendoza" },
-                    { 44, "Misiones" },
-                    { 45, "Neuquén" },
-                    { 46, "Río Negro" },
-                    { 47, "Salta" },
-                    { 48, "San Juan" },
-                    { 49, "San Luis" },
-                    { 50, "Santa Cruz" },
-                    { 51, "Santa Fe" },
-                    { 52, "Santiago del Estero" },
-                    { 53, "Tierra del Fuego" },
-                    { 54, "Tucumán" }
-                });
+                values: new object[] { 1, "Buenos Aires" });
 
             migrationBuilder.InsertData(
                 table: "TipoDeSiniestro",
