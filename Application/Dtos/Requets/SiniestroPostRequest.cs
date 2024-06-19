@@ -4,7 +4,7 @@ namespace Application.Dtos.Requets
 {
     public class SiniestroPostRequest
     {
-        public int UsuarioId { get; set; }
+        public string UsuarioId { get; set; }
 
         public int NroDePoliza { get; set; }
 
