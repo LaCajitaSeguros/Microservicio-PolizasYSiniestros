@@ -23,7 +23,7 @@ namespace PolizasYSiniestros.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/{usuarioId}")]
+        [Route("[controller]/buscarPolizasConSiniestros/{usuarioId}")]
         public async Task<ActionResult<List<PolizaDto>>> GetAsync(string usuarioId)
         {
             try
@@ -53,7 +53,7 @@ namespace PolizasYSiniestros.Controllers
         /// <response code="500">Ocurrio una falla en el servidor</response>
         /// <returns>Una Poliza.</returns>
         [HttpPost]
-        [Route("[controller]")]
+        [Route("[controller]/registrar")]
         public async Task<ActionResult<PolizaPostResponse>> PostAsync([FromBody] PolizaPostRequest request)
         {
             try

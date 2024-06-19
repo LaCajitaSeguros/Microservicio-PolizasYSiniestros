@@ -25,7 +25,7 @@ namespace PolizasYSiniestros.Controllers
 
 
         [HttpPost]
-        [Route("[controller]")]
+        [Route("[controller]/registrar")]
         public async Task<ActionResult<SiniestroPostResponse>> PostAsync([FromBody] SiniestroPostRequest request)
         {
             try

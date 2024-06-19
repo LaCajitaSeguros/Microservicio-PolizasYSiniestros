@@ -395,170 +395,165 @@ namespace Infraestructure.Migrations
 
             modelBuilder.Entity("Domain.Entitys.Localidad", b =>
                 {
-                    b.Property<int>("ProvinciaId")
+                    b.Property<int>("LocalidadId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProvinciaId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocalidadId"));
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProvinciaId");
+                    b.HasKey("LocalidadId");
 
                     b.ToTable("Localidad");
 
                     b.HasData(
                         new
                         {
-                            ProvinciaId = 1,
+                            LocalidadId = 1,
                             Nombre = "Morón"
                         },
                         new
                         {
-                            ProvinciaId = 2,
+                            LocalidadId = 2,
                             Nombre = "San Justo"
                         },
                         new
                         {
-                            ProvinciaId = 3,
+                            LocalidadId = 3,
                             Nombre = "San Martín"
                         },
                         new
                         {
-                            ProvinciaId = 4,
+                            LocalidadId = 4,
                             Nombre = "Quilmes"
                         },
                         new
                         {
-                            ProvinciaId = 5,
+                            LocalidadId = 5,
                             Nombre = "Lanús"
                         },
                         new
                         {
-                            ProvinciaId = 6,
+                            LocalidadId = 6,
                             Nombre = "Avellaneda"
                         },
                         new
                         {
-                            ProvinciaId = 7,
+                            LocalidadId = 7,
                             Nombre = "Vicente López"
                         },
                         new
                         {
-                            ProvinciaId = 8,
+                            LocalidadId = 8,
                             Nombre = "San Isidro"
                         },
                         new
                         {
-                            ProvinciaId = 9,
+                            LocalidadId = 9,
                             Nombre = "Tigre"
                         },
                         new
                         {
-                            ProvinciaId = 10,
+                            LocalidadId = 10,
                             Nombre = "San Fernando"
                         },
                         new
                         {
-                            ProvinciaId = 11,
+                            LocalidadId = 11,
                             Nombre = "Pilar"
                         },
                         new
                         {
-                            ProvinciaId = 12,
+                            LocalidadId = 12,
                             Nombre = "Escobar"
                         },
                         new
                         {
-                            ProvinciaId = 13,
+                            LocalidadId = 13,
                             Nombre = "Moreno"
                         },
                         new
                         {
-                            ProvinciaId = 14,
+                            LocalidadId = 14,
                             Nombre = "Lomas de Zamora"
                         },
                         new
                         {
-                            ProvinciaId = 15,
+                            LocalidadId = 15,
                             Nombre = "Adrogué"
                         },
                         new
                         {
-                            ProvinciaId = 16,
+                            LocalidadId = 16,
                             Nombre = "Banfield"
                         },
                         new
                         {
-                            ProvinciaId = 17,
+                            LocalidadId = 17,
                             Nombre = "Temperley"
                         },
                         new
                         {
-                            ProvinciaId = 18,
+                            LocalidadId = 18,
                             Nombre = "Hurlingham"
                         },
                         new
                         {
-                            ProvinciaId = 19,
+                            LocalidadId = 19,
                             Nombre = "Ituzaingó"
                         },
                         new
                         {
-                            ProvinciaId = 20,
+                            LocalidadId = 20,
                             Nombre = "Castelar"
                         },
                         new
                         {
-                            ProvinciaId = 21,
+                            LocalidadId = 21,
                             Nombre = "Ramos Mejía"
                         },
                         new
                         {
-                            ProvinciaId = 22,
+                            LocalidadId = 22,
                             Nombre = "Merlo"
                         },
                         new
                         {
-                            ProvinciaId = 23,
+                            LocalidadId = 23,
                             Nombre = "Ezeiza"
                         },
                         new
                         {
-                            ProvinciaId = 24,
+                            LocalidadId = 24,
                             Nombre = "Berazategui"
                         },
                         new
                         {
-                            ProvinciaId = 25,
+                            LocalidadId = 25,
                             Nombre = "Florencio Varela"
                         },
                         new
                         {
-                            ProvinciaId = 26,
+                            LocalidadId = 26,
                             Nombre = "General Rodríguez"
                         },
                         new
                         {
-                            ProvinciaId = 27,
+                            LocalidadId = 27,
                             Nombre = "Villa Ballester"
                         },
                         new
                         {
-                            ProvinciaId = 28,
+                            LocalidadId = 28,
                             Nombre = "Bella Vista"
                         },
                         new
                         {
-                            ProvinciaId = 29,
+                            LocalidadId = 29,
                             Nombre = "Ciudadela"
-                        },
-                        new
-                        {
-                            ProvinciaId = 30,
-                            Nombre = "Quilmes"
                         });
                 });
 
@@ -620,123 +615,8 @@ namespace Infraestructure.Migrations
                     b.HasData(
                         new
                         {
-                            ProvinciaId = 31,
+                            ProvinciaId = 1,
                             Nombre = "Buenos Aires"
-                        },
-                        new
-                        {
-                            ProvinciaId = 32,
-                            Nombre = "CABA"
-                        },
-                        new
-                        {
-                            ProvinciaId = 33,
-                            Nombre = "Catamarca"
-                        },
-                        new
-                        {
-                            ProvinciaId = 34,
-                            Nombre = "Chaco"
-                        },
-                        new
-                        {
-                            ProvinciaId = 35,
-                            Nombre = "Chubut"
-                        },
-                        new
-                        {
-                            ProvinciaId = 36,
-                            Nombre = "Córdoba"
-                        },
-                        new
-                        {
-                            ProvinciaId = 37,
-                            Nombre = "Corrientes"
-                        },
-                        new
-                        {
-                            ProvinciaId = 38,
-                            Nombre = "Entre Ríos"
-                        },
-                        new
-                        {
-                            ProvinciaId = 39,
-                            Nombre = "Formosa"
-                        },
-                        new
-                        {
-                            ProvinciaId = 40,
-                            Nombre = "Jujuy"
-                        },
-                        new
-                        {
-                            ProvinciaId = 41,
-                            Nombre = "La Pampa"
-                        },
-                        new
-                        {
-                            ProvinciaId = 42,
-                            Nombre = "La Rioja"
-                        },
-                        new
-                        {
-                            ProvinciaId = 43,
-                            Nombre = "Mendoza"
-                        },
-                        new
-                        {
-                            ProvinciaId = 44,
-                            Nombre = "Misiones"
-                        },
-                        new
-                        {
-                            ProvinciaId = 45,
-                            Nombre = "Neuquén"
-                        },
-                        new
-                        {
-                            ProvinciaId = 46,
-                            Nombre = "Río Negro"
-                        },
-                        new
-                        {
-                            ProvinciaId = 47,
-                            Nombre = "Salta"
-                        },
-                        new
-                        {
-                            ProvinciaId = 48,
-                            Nombre = "San Juan"
-                        },
-                        new
-                        {
-                            ProvinciaId = 49,
-                            Nombre = "San Luis"
-                        },
-                        new
-                        {
-                            ProvinciaId = 50,
-                            Nombre = "Santa Cruz"
-                        },
-                        new
-                        {
-                            ProvinciaId = 51,
-                            Nombre = "Santa Fe"
-                        },
-                        new
-                        {
-                            ProvinciaId = 52,
-                            Nombre = "Santiago del Estero"
-                        },
-                        new
-                        {
-                            ProvinciaId = 53,
-                            Nombre = "Tierra del Fuego"
-                        },
-                        new
-                        {
-                            ProvinciaId = 54,
-                            Nombre = "Tucumán"
                         });
                 });
 
