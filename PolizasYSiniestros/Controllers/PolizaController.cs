@@ -1,5 +1,4 @@
-﻿using Aplication.Dtos;
-using Application.Dtos.ApiError;
+﻿using Application.Dtos.ApiError;
 using Application.Dtos.Requets;
 using Application.Dtos.Response;
 using Application.Exceptions;
@@ -30,7 +29,7 @@ namespace PolizasYSiniestros.Controllers
             try
             {
                 List<PolizaDto> response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
-                return response;
+                return Ok(response);
             }
             catch (DbException ex)
             {
@@ -61,7 +60,8 @@ namespace PolizasYSiniestros.Controllers
             {
                 PolizaPostResponse response = await _polizaService.GuardarPolizaAsync(request);
 
-                return new JsonResult(new Result(response, HttpStatusCode.Created)) { StatusCode = 201 };
+                //return new JsonResult(new Result(response, HttpStatusCode.Created)) { StatusCode = 201 };
+                return Ok(response);
 
             }
             catch (DbException ex)
