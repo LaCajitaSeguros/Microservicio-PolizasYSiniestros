@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240619182003_DbPolizasYSiniestros")]
+    [Migration("20240620202012_DbPolizasYSiniestros")]
     partial class DbPolizasYSiniestros
     {
         /// <inheritdoc />
@@ -630,6 +630,9 @@ namespace Infraestructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SiniestroId"));
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Imagenes")
                         .IsRequired()

@@ -179,6 +179,7 @@ namespace Infraestructure.Migrations
                     SiniestroId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Observacion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Imagenes = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PolizaId = table.Column<int>(type: "int", nullable: false),
                     UbicacionId = table.Column<int>(type: "int", nullable: false)

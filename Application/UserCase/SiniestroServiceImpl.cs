@@ -58,6 +58,8 @@ namespace Application.UserCase
                                                         .TipoDeSiniestroASiniestroTipoDeSiniestro(
                                                                     siniestroPostRequest.Siniestro.TiposDeSiniestros);
 
+            //siniestro.Fecha = siniestroPostRequest.Siniestro.Fecha;
+
             Siniestro siniestroGuardado = await _genericRepository.save(siniestro);
 
             //Armo la respuesta

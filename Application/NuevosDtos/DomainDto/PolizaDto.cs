@@ -10,6 +10,8 @@ namespace Application.NuevosDtos.DomainDto
         public PlanDTO Plan { get; set; }
 
         public decimal Prima { get; set; }
+        public DateTime FechaVencimiento { get; set; }
+        public DateTime FechaInicio { get; set; }
 
         public BienAseguradoDto BienAsegurado { get; set; }
 

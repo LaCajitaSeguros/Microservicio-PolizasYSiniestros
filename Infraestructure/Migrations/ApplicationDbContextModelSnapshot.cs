@@ -628,6 +628,9 @@ namespace Infraestructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SiniestroId"));
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Imagenes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

@@ -26,7 +26,9 @@ namespace Application.ConfigMapper
             CreateMap<SiniestroPostRequest, Siniestro>()
                   .ForMember(dest => dest.TercerosInvolucrados, opt => opt.MapFrom(src => src.Siniestro.TercerosInvolucrados))
                   .ForMember(dest => dest.Ubicacion, opt => opt.MapFrom(src => src.Siniestro.Ubicacion))
+                  .ForMember(dest => dest.Fecha, opt => opt.MapFrom(src => src.Siniestro.Fecha))
                   .ForMember(dest => dest.Observacion, opt => opt.MapFrom(src => src.Siniestro.Observacion)).ReverseMap();
+                   
 
             CreateMap<Siniestro, SiniestroPostResponse>()
                 .ForMember(dest => dest.NumeroDeSiniestro, opt => opt.MapFrom(src => src.SiniestroId)).ReverseMap();

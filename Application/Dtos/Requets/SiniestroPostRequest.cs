@@ -8,6 +8,7 @@ namespace Application.Dtos.Requets
 
         public int NroDePoliza { get; set; }
 
+
         public SiniestroDTO Siniestro { get; set; }
     }
 }
