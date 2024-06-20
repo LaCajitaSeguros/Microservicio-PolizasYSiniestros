@@ -9,6 +9,9 @@ namespace Domain.Entitys
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SiniestroId { get; set; }
         public string Observacion { get; set; }
+
+        public DateTime Fecha { get; set; }
+
         public string Imagenes { get; set; } // Ver si tomamos las url y separamos por como o creamos una tabla que contengan todas las url con imagenes
 
         //Armos las relaciones

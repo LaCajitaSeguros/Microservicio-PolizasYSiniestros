@@ -14,7 +14,19 @@ namespace PolizasYSiniestros
     {
         public static void Main(string[] args)
         {
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
             var builder = WebApplication.CreateBuilder(args);
+
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://127.0.0.1:5500"); // add the allowed origins  
+                                  });
+            });
 
             // Add services to the container.
 
@@ -66,6 +78,10 @@ namespace PolizasYSiniestros
 
 
             var app = builder.Build();
+
+            // Habilitar CORS en la aplicación
+            app.UseCors(MyAllowSpecificOrigins);
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
