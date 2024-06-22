@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class DbPolizasYSiniestros : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -296,7 +296,11 @@ namespace Infraestructure.Migrations
                 {
                     { 1, "Fiat" },
                     { 2, "Ford" },
-                    { 3, "BMW" }
+                    { 3, "BMW" },
+                    { 4, "Peugeot" },
+                    { 5, "Toyota" },
+                    { 6, "Volkswagen" },
+                    { 7, "Renault" }
                 });
 
             migrationBuilder.InsertData(
@@ -328,7 +332,18 @@ namespace Infraestructure.Migrations
                     { 6, 2, "Focus" },
                     { 7, 3, "320" },
                     { 8, 3, "530" },
-                    { 9, 3, "750" }
+                    { 9, 3, "750" },
+                    { 10, 4, "208" },
+                    { 11, 4, "308" },
+                    { 12, 4, "3008" },
+                    { 13, 5, "Corolla" },
+                    { 14, 5, "Hilux" },
+                    { 15, 5, "Etios" },
+                    { 16, 6, "Amarok" },
+                    { 17, 6, "Taos" },
+                    { 18, 7, "Kangoo II" },
+                    { 19, 7, "Sandero" },
+                    { 20, 7, "Stepway" }
                 });
 
             migrationBuilder.InsertData(
@@ -361,8 +376,38 @@ namespace Infraestructure.Migrations
                     { 23, 8, "3.0 530ia Executive 258cv", 17000000m },
                     { 24, 8, "3.0 530ia Sportline", 47900000m },
                     { 25, 9, "Serie 7 4.8 750i Premium 407cv", 38000000m },
-                    { 26, 9, "erie 7 4.8 750ia Premium Stept", 38000000m },
-                    { 27, 9, "750i ", 150000000m }
+                    { 26, 9, "Serie 7 4.8 750ia Premium Stept", 38000000m },
+                    { 27, 9, "750i", 150000000m },
+                    { 28, 10, "New Like", 20629500m },
+                    { 29, 10, "Active Pk", 22987100m },
+                    { 30, 10, "Feline AT", 27530600m },
+                    { 31, 11, "2.0 Feline 143cv", 11000000m },
+                    { 32, 11, "1.6 Cc Thp 156cv", 22000000m },
+                    { 33, 11, "2.0 Feline 143cv Tiptronic", 10600000m },
+                    { 34, 12, "GT Pack THP", 57592800m },
+                    { 35, 13, "2.0 XLI CVT", 24447000m },
+                    { 36, 13, "2.0 XEI CVT", 26468000m },
+                    { 37, 13, "2.0 SEG CVT", 29625000m },
+                    { 38, 14, "Cabina Simple DX 4x2", 28669000m },
+                    { 39, 14, "Cabina Simple DX 4x4", 34566000m },
+                    { 40, 14, "Cabina Doble DX 4x2", 32306000m },
+                    { 41, 15, "X 6 M/T", 15500000m },
+                    { 42, 15, "XLS Pack 6 M/T", 19500000m },
+                    { 43, 15, "XLS Pack 4 A/T", 21900000m },
+                    { 44, 16, "Trendline", 18900000m },
+                    { 45, 16, "Comfortline", 34400000m },
+                    { 46, 16, "Highline", 42300000m },
+                    { 47, 17, "Comfortline", 32000000m },
+                    { 48, 17, "Highline", 40060000m },
+                    { 49, 17, "Hero", 39900000m },
+                    { 50, 18, "ZEN 1.6 SCe", 27894900m },
+                    { 51, 18, "STEPWAY 1.6 SCe", 28584120m },
+                    { 52, 18, "STEPWAY 1.5 dCi", 29814964m },
+                    { 53, 19, "Life 1.6", 23112016m },
+                    { 54, 19, "Intens 1.6", 25036944m },
+                    { 55, 19, "Intens 1.6 CVT", 25695754m },
+                    { 56, 20, "Intens 1.6", 25120636m },
+                    { 57, 20, "Intens 1.6 CVT", 26030524m }
                 });
 
             migrationBuilder.CreateIndex(

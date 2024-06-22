@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240620202012_DbPolizasYSiniestros")]
-    partial class DbPolizasYSiniestros
+    [Migration("20240622032511_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,26 @@ namespace Infraestructure.Migrations
                         {
                             MarcaId = 3,
                             NombreMarca = "BMW"
+                        },
+                        new
+                        {
+                            MarcaId = 4,
+                            NombreMarca = "Peugeot"
+                        },
+                        new
+                        {
+                            MarcaId = 5,
+                            NombreMarca = "Toyota"
+                        },
+                        new
+                        {
+                            MarcaId = 6,
+                            NombreMarca = "Volkswagen"
+                        },
+                        new
+                        {
+                            MarcaId = 7,
+                            NombreMarca = "Renault"
                         });
                 });
 
@@ -134,6 +154,72 @@ namespace Infraestructure.Migrations
                             ModeloId = 9,
                             MarcaId = 3,
                             NombreModelo = "750"
+                        },
+                        new
+                        {
+                            ModeloId = 10,
+                            MarcaId = 4,
+                            NombreModelo = "208"
+                        },
+                        new
+                        {
+                            ModeloId = 11,
+                            MarcaId = 4,
+                            NombreModelo = "308"
+                        },
+                        new
+                        {
+                            ModeloId = 12,
+                            MarcaId = 4,
+                            NombreModelo = "3008"
+                        },
+                        new
+                        {
+                            ModeloId = 13,
+                            MarcaId = 5,
+                            NombreModelo = "Corolla"
+                        },
+                        new
+                        {
+                            ModeloId = 14,
+                            MarcaId = 5,
+                            NombreModelo = "Hilux"
+                        },
+                        new
+                        {
+                            ModeloId = 15,
+                            MarcaId = 5,
+                            NombreModelo = "Etios"
+                        },
+                        new
+                        {
+                            ModeloId = 16,
+                            MarcaId = 6,
+                            NombreModelo = "Amarok"
+                        },
+                        new
+                        {
+                            ModeloId = 17,
+                            MarcaId = 6,
+                            NombreModelo = "Taos"
+                        },
+                        new
+                        {
+                            ModeloId = 18,
+                            MarcaId = 7,
+                            NombreModelo = "Kangoo II"
+                        },
+                        new
+                        {
+                            ModeloId = 19,
+                            MarcaId = 7,
+                            NombreModelo = "Sandero"
+                        },
+                        new
+                        {
+                            ModeloId = 20,
+                            MarcaId = 7,
+                            NombreModelo = "Stepway"
                         });
                 });
 
@@ -341,15 +427,225 @@ namespace Infraestructure.Migrations
                         {
                             VersionId = 26,
                             ModeloId = 9,
-                            NombreVersion = "erie 7 4.8 750ia Premium Stept",
+                            NombreVersion = "Serie 7 4.8 750ia Premium Stept",
                             PrecioBase = 38000000m
                         },
                         new
                         {
                             VersionId = 27,
                             ModeloId = 9,
-                            NombreVersion = "750i ",
+                            NombreVersion = "750i",
                             PrecioBase = 150000000m
+                        },
+                        new
+                        {
+                            VersionId = 28,
+                            ModeloId = 10,
+                            NombreVersion = "New Like",
+                            PrecioBase = 20629500m
+                        },
+                        new
+                        {
+                            VersionId = 29,
+                            ModeloId = 10,
+                            NombreVersion = "Active Pk",
+                            PrecioBase = 22987100m
+                        },
+                        new
+                        {
+                            VersionId = 30,
+                            ModeloId = 10,
+                            NombreVersion = "Feline AT",
+                            PrecioBase = 27530600m
+                        },
+                        new
+                        {
+                            VersionId = 31,
+                            ModeloId = 11,
+                            NombreVersion = "2.0 Feline 143cv",
+                            PrecioBase = 11000000m
+                        },
+                        new
+                        {
+                            VersionId = 32,
+                            ModeloId = 11,
+                            NombreVersion = "1.6 Cc Thp 156cv",
+                            PrecioBase = 22000000m
+                        },
+                        new
+                        {
+                            VersionId = 33,
+                            ModeloId = 11,
+                            NombreVersion = "2.0 Feline 143cv Tiptronic",
+                            PrecioBase = 10600000m
+                        },
+                        new
+                        {
+                            VersionId = 34,
+                            ModeloId = 12,
+                            NombreVersion = "GT Pack THP",
+                            PrecioBase = 57592800m
+                        },
+                        new
+                        {
+                            VersionId = 35,
+                            ModeloId = 13,
+                            NombreVersion = "2.0 XLI CVT",
+                            PrecioBase = 24447000m
+                        },
+                        new
+                        {
+                            VersionId = 36,
+                            ModeloId = 13,
+                            NombreVersion = "2.0 XEI CVT",
+                            PrecioBase = 26468000m
+                        },
+                        new
+                        {
+                            VersionId = 37,
+                            ModeloId = 13,
+                            NombreVersion = "2.0 SEG CVT",
+                            PrecioBase = 29625000m
+                        },
+                        new
+                        {
+                            VersionId = 38,
+                            ModeloId = 14,
+                            NombreVersion = "Cabina Simple DX 4x2",
+                            PrecioBase = 28669000m
+                        },
+                        new
+                        {
+                            VersionId = 39,
+                            ModeloId = 14,
+                            NombreVersion = "Cabina Simple DX 4x4",
+                            PrecioBase = 34566000m
+                        },
+                        new
+                        {
+                            VersionId = 40,
+                            ModeloId = 14,
+                            NombreVersion = "Cabina Doble DX 4x2",
+                            PrecioBase = 32306000m
+                        },
+                        new
+                        {
+                            VersionId = 41,
+                            ModeloId = 15,
+                            NombreVersion = "X 6 M/T",
+                            PrecioBase = 15500000m
+                        },
+                        new
+                        {
+                            VersionId = 42,
+                            ModeloId = 15,
+                            NombreVersion = "XLS Pack 6 M/T",
+                            PrecioBase = 19500000m
+                        },
+                        new
+                        {
+                            VersionId = 43,
+                            ModeloId = 15,
+                            NombreVersion = "XLS Pack 4 A/T",
+                            PrecioBase = 21900000m
+                        },
+                        new
+                        {
+                            VersionId = 44,
+                            ModeloId = 16,
+                            NombreVersion = "Trendline",
+                            PrecioBase = 18900000m
+                        },
+                        new
+                        {
+                            VersionId = 45,
+                            ModeloId = 16,
+                            NombreVersion = "Comfortline",
+                            PrecioBase = 34400000m
+                        },
+                        new
+                        {
+                            VersionId = 46,
+                            ModeloId = 16,
+                            NombreVersion = "Highline",
+                            PrecioBase = 42300000m
+                        },
+                        new
+                        {
+                            VersionId = 47,
+                            ModeloId = 17,
+                            NombreVersion = "Comfortline",
+                            PrecioBase = 32000000m
+                        },
+                        new
+                        {
+                            VersionId = 48,
+                            ModeloId = 17,
+                            NombreVersion = "Highline",
+                            PrecioBase = 40060000m
+                        },
+                        new
+                        {
+                            VersionId = 49,
+                            ModeloId = 17,
+                            NombreVersion = "Hero",
+                            PrecioBase = 39900000m
+                        },
+                        new
+                        {
+                            VersionId = 50,
+                            ModeloId = 18,
+                            NombreVersion = "ZEN 1.6 SCe",
+                            PrecioBase = 27894900m
+                        },
+                        new
+                        {
+                            VersionId = 51,
+                            ModeloId = 18,
+                            NombreVersion = "STEPWAY 1.6 SCe",
+                            PrecioBase = 28584120m
+                        },
+                        new
+                        {
+                            VersionId = 52,
+                            ModeloId = 18,
+                            NombreVersion = "STEPWAY 1.5 dCi",
+                            PrecioBase = 29814964m
+                        },
+                        new
+                        {
+                            VersionId = 53,
+                            ModeloId = 19,
+                            NombreVersion = "Life 1.6",
+                            PrecioBase = 23112016m
+                        },
+                        new
+                        {
+                            VersionId = 54,
+                            ModeloId = 19,
+                            NombreVersion = "Intens 1.6",
+                            PrecioBase = 25036944m
+                        },
+                        new
+                        {
+                            VersionId = 55,
+                            ModeloId = 19,
+                            NombreVersion = "Intens 1.6 CVT",
+                            PrecioBase = 25695754m
+                        },
+                        new
+                        {
+                            VersionId = 56,
+                            ModeloId = 20,
+                            NombreVersion = "Intens 1.6",
+                            PrecioBase = 25120636m
+                        },
+                        new
+                        {
+                            VersionId = 57,
+                            ModeloId = 20,
+                            NombreVersion = "Intens 1.6 CVT",
+                            PrecioBase = 26030524m
                         });
                 });
 

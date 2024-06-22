@@ -19,14 +19,11 @@ namespace PolizasYSiniestros
             var builder = WebApplication.CreateBuilder(args);
 
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy =>
-                                  {
-                                      policy.WithOrigins("http://127.0.0.1:5500"); // add the allowed origins  
-                                  });
-            });
+            builder.Services.AddCors(p => p.AddPolicy("PolicyCors", build
+    => {
+        build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+
+    }));
 
             // Add services to the container.
 
@@ -79,8 +76,7 @@ namespace PolizasYSiniestros
 
             var app = builder.Build();
 
-            // Habilitar CORS en la aplicación
-            app.UseCors(MyAllowSpecificOrigins);
+            
 
 
             // Configure the HTTP request pipeline.
@@ -89,7 +85,7 @@ namespace PolizasYSiniestros
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("PolicyCors");
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
