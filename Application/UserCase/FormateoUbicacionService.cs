@@ -64,7 +64,7 @@ namespace Application.UserCase
                 siniestroDto.Ubicacion.Localidad = localidad?.Nombre;
                 siniestroDto.Ubicacion.Provincia = provincia?.Nombre;
 
-                siniestroDto.TercerosInvolucrados = siniestro.TercerosInvolucrados.Select(async tercero =>
+                /*siniestroDto.TercerosInvolucrados = siniestro.TercerosInvolucrados.Select(async tercero =>
                 {
                     var terceroDto = _mapper.Map<TercerosInvolucradosDto>(tercero);
 
@@ -75,7 +75,7 @@ namespace Application.UserCase
                     terceroDto.Ubicacion.Provincia = terceroProvincia?.Nombre;
 
                     return terceroDto;
-                }).Select(task => task.Result).ToList();
+                }).Select(task => task.Result).ToList();*/
 
                 siniestroDtos.Add(siniestroDto);
             }

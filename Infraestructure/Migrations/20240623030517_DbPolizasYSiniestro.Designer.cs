@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240623024601_DbPolizasYSiniestro")]
+    [Migration("20240623030517_DbPolizasYSiniestro")]
     partial class DbPolizasYSiniestro
     {
         /// <inheritdoc />
@@ -940,6 +940,9 @@ namespace Infraestructure.Migrations
 
                     b.Property<int>("PolizaId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("TieneTercerosInvolucrados")
+                        .HasColumnType("bit");
 
                     b.Property<int>("UbicacionId")
                         .HasColumnType("int");

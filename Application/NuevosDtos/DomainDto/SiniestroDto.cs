@@ -12,7 +12,9 @@ namespace Application.NuevosDtos.DomainDto
 
         public UbicacionDto Ubicacion { get; set; }
 
-        public List<TercerosInvolucradosDto> TercerosInvolucrados { get; set; }
+        public Boolean TieneTercerosInvolucrados { get; set; }
+
+        //public List<TercerosInvolucradosDto> TercerosInvolucrados { get; set; }
 
     }
 }

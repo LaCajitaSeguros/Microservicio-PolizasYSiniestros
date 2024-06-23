@@ -14,6 +14,8 @@ namespace Application.Dtos.DomainDTO
 
         public List<ImagenDTO> Imagenes { get; set; }
 
-        public List<TercerosInvolucradosDTO> TercerosInvolucrados { get; set; }
+        public Boolean TieneTercerosInvolucrados { get; set; }
+
+        //public List<TercerosInvolucradosDTO> TercerosInvolucrados { get; set; }
     }
 }

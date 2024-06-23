@@ -938,6 +938,9 @@ namespace Infraestructure.Migrations
                     b.Property<int>("PolizaId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("TieneTercerosInvolucrados")
+                        .HasColumnType("bit");
+
                     b.Property<int>("UbicacionId")
                         .HasColumnType("int");
 

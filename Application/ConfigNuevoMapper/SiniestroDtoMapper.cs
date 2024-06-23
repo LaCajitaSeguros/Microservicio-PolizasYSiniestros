@@ -10,7 +10,7 @@ namespace Application.ConfigNuevoMapper
         {
             CreateMap<Siniestro, SiniestroDto>()
             .ForMember(dest => dest.SiniestroId, opt => opt.MapFrom(src => src.SiniestroId))
-            .ForMember(dest => dest.TercerosInvolucrados, opt => opt.MapFrom(src => src.TercerosInvolucrados))
+            .ForMember(dest => dest.TieneTercerosInvolucrados, opt => opt.MapFrom(src => src.TieneTercerosInvolucrados))
             .ForMember(dest => dest.Ubicacion, opt => opt.MapFrom(src => src.Ubicacion))
             .ForMember(dest => dest.Imagenes, opt => opt.Ignore())
             .ReverseMap();
