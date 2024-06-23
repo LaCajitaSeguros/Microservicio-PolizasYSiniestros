@@ -10,10 +10,12 @@ namespace Infraestructure.Util.DataSet
         public void Configure(EntityTypeBuilder<TipoDeSiniestro> builder)
         {
             builder.HasData(
-                 new TipoDeSiniestro { TipoDeSiniestroId = 1, Nombre = "Robo" },
-                 new TipoDeSiniestro { TipoDeSiniestroId = 2, Nombre = "Incendio" },
-                 new TipoDeSiniestro { TipoDeSiniestroId = 3, Nombre = "Choque" },
-                 new TipoDeSiniestro { TipoDeSiniestroId = 4, Nombre = "Granizo" }
+                 new TipoDeSiniestro { TipoDeSiniestroId = 1, Nombre = "Accidente de transito" },
+                 new TipoDeSiniestro { TipoDeSiniestroId = 2, Nombre = "Granizo" },
+                 new TipoDeSiniestro { TipoDeSiniestroId = 3, Nombre = "Incendio" },
+                 new TipoDeSiniestro { TipoDeSiniestroId = 4, Nombre = "Inundación" },
+                 new TipoDeSiniestro { TipoDeSiniestroId = 5, Nombre = "Robo" },
+                 new TipoDeSiniestro { TipoDeSiniestroId = 6, Nombre = "Rotura" }
                 );
         }
     }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240622032511_init")]
-    partial class init
+    [Migration("20240623024601_DbPolizasYSiniestro")]
+    partial class DbPolizasYSiniestro
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1028,22 +1028,32 @@ namespace Infraestructure.Migrations
                         new
                         {
                             TipoDeSiniestroId = 1,
-                            Nombre = "Robo"
+                            Nombre = "Accidente de transito"
                         },
                         new
                         {
                             TipoDeSiniestroId = 2,
-                            Nombre = "Incendio"
+                            Nombre = "Granizo"
                         },
                         new
                         {
                             TipoDeSiniestroId = 3,
-                            Nombre = "Choque"
+                            Nombre = "Incendio"
                         },
                         new
                         {
                             TipoDeSiniestroId = 4,
-                            Nombre = "Granizo"
+                            Nombre = "Inundación"
+                        },
+                        new
+                        {
+                            TipoDeSiniestroId = 5,
+                            Nombre = "Robo"
+                        },
+                        new
+                        {
+                            TipoDeSiniestroId = 6,
+                            Nombre = "Rotura"
                         });
                 });
 

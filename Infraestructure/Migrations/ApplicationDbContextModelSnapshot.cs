@@ -1025,22 +1025,32 @@ namespace Infraestructure.Migrations
                         new
                         {
                             TipoDeSiniestroId = 1,
-                            Nombre = "Robo"
+                            Nombre = "Accidente de transito"
                         },
                         new
                         {
                             TipoDeSiniestroId = 2,
-                            Nombre = "Incendio"
+                            Nombre = "Granizo"
                         },
                         new
                         {
                             TipoDeSiniestroId = 3,
-                            Nombre = "Choque"
+                            Nombre = "Incendio"
                         },
                         new
                         {
                             TipoDeSiniestroId = 4,
-                            Nombre = "Granizo"
+                            Nombre = "Inundación"
+                        },
+                        new
+                        {
+                            TipoDeSiniestroId = 5,
+                            Nombre = "Robo"
+                        },
+                        new
+                        {
+                            TipoDeSiniestroId = 6,
+                            Nombre = "Rotura"
                         });
                 });
 

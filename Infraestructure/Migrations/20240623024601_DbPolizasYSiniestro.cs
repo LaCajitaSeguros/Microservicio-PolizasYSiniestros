@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infraestructure.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class DbPolizasYSiniestro : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -313,10 +313,12 @@ namespace Infraestructure.Migrations
                 columns: new[] { "TipoDeSiniestroId", "Nombre" },
                 values: new object[,]
                 {
-                    { 1, "Robo" },
-                    { 2, "Incendio" },
-                    { 3, "Choque" },
-                    { 4, "Granizo" }
+                    { 1, "Accidente de transito" },
+                    { 2, "Granizo" },
+                    { 3, "Incendio" },
+                    { 4, "Inundación" },
+                    { 5, "Robo" },
+                    { 6, "Rotura" }
                 });
 
             migrationBuilder.InsertData(
