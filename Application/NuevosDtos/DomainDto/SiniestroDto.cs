@@ -7,8 +7,10 @@ namespace Application.NuevosDtos.DomainDto
     {
         public int SiniestroId { get; set; }
         public DateTime Fecha { get; set; }
+        public string Observacion {get; set;}
         public List<TipoSiniestroDto> TipoDeSiniestros { get; set; }
         public List<ImagenDTO> Imagenes { get; set; }
+
 
         public UbicacionDto Ubicacion { get; set; }
 
