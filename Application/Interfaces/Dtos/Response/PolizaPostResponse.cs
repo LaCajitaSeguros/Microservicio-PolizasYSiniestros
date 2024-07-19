@@ -1,6 +1,5 @@
 ﻿using Application.Dtos.DomainDTO;
-using Application.Dtos.Requets;
-using Application.NuevosDtos.DomainDto;
+using Application.Dtos.Response.DtosUtils;
 
 namespace Application.Dtos.Response
 {
@@ -11,6 +10,6 @@ namespace Application.Dtos.Response
 
         public PlanDTO Plan { get; set; }
 
-        public BienAseguradoDto BienAsegurado { get; set; }
+        public BienAseguradoResponseDto BienAsegurado { get; set; }
     }
 }

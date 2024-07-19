@@ -1,7 +1,7 @@
 ﻿using Application.ConfigMapper;
+using Application.Dtos.Response.DtosUtils;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
-using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 using Domain.Entitys;
 
@@ -25,9 +25,9 @@ namespace Application.UserCase
             _mapper = mapper;
         }
 
-        public async Task<BienAseguradoDto> MapearUbicacionBienAsegurado(BienAsegurado bienAsegurado)
+        public async Task<BienAseguradoResponseDto> MapearUbicacionBienAsegurado(BienAsegurado bienAsegurado)
         {
-            BienAseguradoDto bienAseguradoDto = _mapper.Map<BienAseguradoDto>(bienAsegurado);
+            BienAseguradoResponseDto bienAseguradoDto = _mapper.Map<BienAseguradoResponseDto>(bienAsegurado);
 
             // bienAseguradoDto.Ubicacion.Provincia = "";
             bienAseguradoDto.Ubicacion.Localidad = "";
@@ -42,14 +42,14 @@ namespace Application.UserCase
             return bienAseguradoDto;
         }
 
-        public async Task<List<SiniestroDto>> MapearUbicacionSiniestros(List<Siniestro> siniestros)
+        public async Task<List<SiniestroResponseDto>> MapearUbicacionSiniestros(List<Siniestro> siniestros)
         {
-            var siniestroDtos = new List<SiniestroDto>();
+            var siniestroDtos = new List<SiniestroResponseDto>();
 
             foreach (var siniestro in siniestros)
             {
 
-                var siniestroDto = _mapper.Map<SiniestroDto>(siniestro);
+                var siniestroDto = _mapper.Map<SiniestroResponseDto>(siniestro);
 
                 //Mapeo de imagenes
                 siniestroDto.Imagenes = ImagenMapper.ImagenStringAImagenDTO(siniestro.Imagenes);

@@ -1,6 +1,6 @@
-﻿namespace Application.NuevosDtos.DomainDto
+﻿namespace Application.Dtos.Response.DtosUtils
 {
-    public class VehiculoVersioDto
+    public class VehiculoVersioResponseDto
     {
         public string NombreVersion { get; set; }
         public string Modelo { get; set; }

@@ -1,14 +1,14 @@
-﻿namespace Application.NuevosDtos.DomainDto
+﻿namespace Application.Dtos.Response.DtosUtils
 {
-    public class BienAseguradoDto
+    public class BienAseguradoResponseDto
     {
         public string Patente { get; set; }
         public string CodChasis { get; set; }
         public string CodMotor { get; set; }
         public bool TieneGnc { get; set; }
         public bool UsoParticular { get; set; }
-        public VehiculoVersioDto version { get; set; }
+        public VehiculoVersioResponseDto version { get; set; }
 
-        public UbicacionDto Ubicacion { get; set; }
+        public UbicacionResponseDto Ubicacion { get; set; }
     }
 }

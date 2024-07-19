@@ -1,9 +1,8 @@
-﻿
-using Application.Dtos.DomainDTO;
+﻿using Application.Dtos.DomainDTO;
 
-namespace Application.NuevosDtos.DomainDto
+namespace Application.Dtos.Response.DtosUtils
 {
-    public class PolizaDto
+    public class PolizaResponseDto
     {
         public int NumeroDePoliza { get; set; }
 
@@ -13,9 +12,9 @@ namespace Application.NuevosDtos.DomainDto
         public DateTime FechaVencimiento { get; set; }
         public DateTime FechaInicio { get; set; }
 
-        public BienAseguradoDto BienAsegurado { get; set; }
+        public BienAseguradoResponseDto BienAsegurado { get; set; }
 
-        public List<SiniestroDto> Siniestros { get; set; }
+        public List<SiniestroResponseDto> Siniestros { get; set; }
 
     }
 }

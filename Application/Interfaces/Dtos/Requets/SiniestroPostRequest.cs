@@ -1,4 +1,4 @@
-﻿using Application.Dtos.DomainDTO;
+﻿using Application.Dtos.Requets.DtosUtils;
 
 namespace Application.Dtos.Requets
 {
@@ -9,6 +9,6 @@ namespace Application.Dtos.Requets
         public int NroDePoliza { get; set; }
 
 
-        public SiniestroDTO Siniestro { get; set; }
+        public SiniestroRequestDto Siniestro { get; set; }
     }
 }

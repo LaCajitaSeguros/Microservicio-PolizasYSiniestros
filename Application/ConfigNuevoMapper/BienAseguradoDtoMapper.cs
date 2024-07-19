@@ -1,4 +1,4 @@
-﻿using Application.NuevosDtos.DomainDto;
+﻿using Application.Dtos.Response.DtosUtils;
 using AutoMapper;
 using Domain.Entitys;
 
@@ -8,7 +8,7 @@ namespace Application.ConfigNuevoMapper
     {
         public BienAseguradoDtoMapper()
         {
-            CreateMap<BienAsegurado, BienAseguradoDto>()
+            CreateMap<BienAsegurado, BienAseguradoResponseDto>()
             .ForMember(dest => dest.CodMotor, opt => opt.MapFrom(src => src.CodMotor))
             .ForMember(dest => dest.CodChasis, opt => opt.MapFrom(src => src.CodChasis)).ReverseMap();
 

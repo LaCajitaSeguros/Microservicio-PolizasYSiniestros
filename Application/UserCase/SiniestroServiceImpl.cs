@@ -1,6 +1,6 @@
 ﻿using Application.ConfigMapper;
-using Application.Dtos.DomainDTO;
 using Application.Dtos.Requets;
+using Application.Dtos.Requets.DtosUtils;
 using Application.Dtos.Response;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
@@ -64,7 +64,7 @@ namespace Application.UserCase
 
             //Armo la respuesta
             SiniestroPostResponse response = _mapper.Map<SiniestroPostResponse>(siniestroGuardado);
-            response.Siniestro = _mapper.Map<SiniestroDTO>(siniestroGuardado);
+            response.Siniestro = _mapper.Map<SiniestroRequestDto>(siniestroGuardado);
 
             //Mapeo los tipo de siniestros del siniestro guardado al response
             response.Siniestro.TiposDeSiniestros = TipoDeSiniestroMapper

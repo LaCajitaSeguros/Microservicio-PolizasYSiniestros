@@ -1,6 +1,6 @@
-﻿namespace Application.NuevosDtos.DomainDto
+﻿namespace Application.Dtos.Response.DtosUtils
 {
-    public class TercerosInvolucradosDto
+    public class TercerosInvolucradosResponseDto
     {
         public string CompaniaDeSeguro { get; set; }
 
@@ -8,6 +8,6 @@
 
         public string Patente { get; set; }
 
-        public UbicacionDto Ubicacion { get; set; }
+        public UbicacionResponseDto Ubicacion { get; set; }
     }
 }

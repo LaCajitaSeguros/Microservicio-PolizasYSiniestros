@@ -1,4 +1,4 @@
-﻿using Application.Dtos.DomainDTO;
+﻿using Application.Dtos.Requets.DtosUtils;
 using System.ComponentModel.DataAnnotations;
 namespace Application.Dtos.Requets
 {
@@ -25,6 +25,6 @@ namespace Application.Dtos.Requets
         public int VersionId { get; set; }
 
         [Required(ErrorMessage = "La ubicación es obligatoria.")]
-        public UbicacionDTO Ubicacion { get; set; }
+        public UbicacionRequestDto Ubicacion { get; set; }
     }
 }

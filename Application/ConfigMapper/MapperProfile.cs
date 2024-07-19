@@ -1,5 +1,5 @@
-﻿using Application.Dtos.DomainDTO;
-using Application.Dtos.Requets;
+﻿using Application.Dtos.Requets;
+using Application.Dtos.Requets.DtosUtils;
 using Application.Dtos.Response;
 using AutoMapper;
 using Domain.Entitys;
@@ -10,7 +10,7 @@ namespace Application.ConfigMapper
     {
         public MapperProfile()
         {
-            CreateMap<UbicacionDTO, Ubicacion>().ReverseMap();
+            CreateMap<UbicacionRequestDto, Ubicacion>().ReverseMap();
 
             CreateMap<BienAseguradoPostRequest, BienAsegurado>().ReverseMap();
 

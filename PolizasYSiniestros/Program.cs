@@ -20,10 +20,11 @@ namespace PolizasYSiniestros
 
 
             builder.Services.AddCors(p => p.AddPolicy("PolicyCors", build
-    => {
-        build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    =>
+            {
+                build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 
-    }));
+            }));
 
             // Add services to the container.
 
@@ -76,7 +77,7 @@ namespace PolizasYSiniestros
 
             var app = builder.Build();
 
-            
+
 
 
             // Configure the HTTP request pipeline.

@@ -1,12 +1,11 @@
 ﻿using Application.Dtos.ApiError;
 using Application.Dtos.Requets;
 using Application.Dtos.Response;
+using Application.Dtos.Response.DtosUtils;
 using Application.Exceptions;
 using Application.Interfaces.Service;
-using Application.NuevosDtos.DomainDto;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Common;
-using System.Net;
 
 namespace PolizasYSiniestros.Controllers
 {
@@ -24,11 +23,11 @@ namespace PolizasYSiniestros.Controllers
 
         [HttpGet]
         [Route("[controller]/buscarPolizasConSiniestros/{usuarioId}")]
-        public async Task<ActionResult<List<PolizaDto>>> GetAsync(string usuarioId)
+        public async Task<ActionResult<List<PolizaResponseDto>>> GetAsync(string usuarioId)
         {
             try
             {
-                List<PolizaDto> response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
+                List<PolizaResponseDto> response = await _polizaService.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
                 return Ok(response);
             }
             catch (DbException ex)

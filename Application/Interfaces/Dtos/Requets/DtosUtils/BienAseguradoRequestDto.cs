@@ -1,6 +1,6 @@
-﻿namespace Application.Dtos.DomainDTO
+﻿namespace Application.Dtos.Requets.DtosUtils
 {
-    public class BienAseguradoDTO
+    public class BienAseguradoRequestDto
     {
         public string Patente { get; set; }
         public int CodChasis { get; set; }
@@ -9,7 +9,7 @@
         public bool UsoParticular { get; set; }
         public int VersionId { get; set; }
 
-        public UbicacionDTO Ubicacion { get; set; }
+        public UbicacionRequestDto Ubicacion { get; set; }
 
     }
 }

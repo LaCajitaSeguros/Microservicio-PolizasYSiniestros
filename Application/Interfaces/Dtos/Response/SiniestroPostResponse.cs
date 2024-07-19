@@ -1,4 +1,4 @@
-﻿using Application.Dtos.DomainDTO;
+﻿using Application.Dtos.Requets.DtosUtils;
 
 namespace Application.Dtos.Response
 {
@@ -6,6 +6,6 @@ namespace Application.Dtos.Response
     {
         public int NumeroDeSiniestro { get; set; }
 
-        public SiniestroDTO Siniestro { get; set; }
+        public SiniestroRequestDto Siniestro { get; set; }
     }
 }

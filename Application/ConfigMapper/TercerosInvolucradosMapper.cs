@@ -1,4 +1,4 @@
-﻿using Application.Dtos.DomainDTO;
+﻿using Application.Dtos.Requets.DtosUtils;
 using AutoMapper;
 using Domain.Entitys;
 
@@ -9,7 +9,7 @@ namespace Application.ConfigMapper
     {
         public TercerosInvolucradosMapper()
         {
-            CreateMap<Tercero, TercerosInvolucradosDTO>().ReverseMap();
+            CreateMap<Tercero, TercerosInvolucradosRequestDto>().ReverseMap();
         }
     }
 }

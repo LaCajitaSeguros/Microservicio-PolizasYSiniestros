@@ -1,10 +1,10 @@
 ﻿using Application.Dtos.DomainDTO;
 using Application.Dtos.Requets;
 using Application.Dtos.Response;
+using Application.Dtos.Response.DtosUtils;
 using Application.Exceptions;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
-using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 using Domain.Entitys;
 using Microsoft.Extensions.Logging;
@@ -42,9 +42,9 @@ namespace Application.UserCase
             _httpService = httpServer;
         }
 
-        public async Task<List<PolizaDto>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
+        public async Task<List<PolizaResponseDto>> BuscarPolizasConSiniestrosPorUsuarioId(string usuarioId)
         {
-            List<PolizaDto> response = new List<PolizaDto>();
+            List<PolizaResponseDto> response = new List<PolizaResponseDto>();
 
             List<Poliza> polizas = await _polizaRepository.BuscarPolizasConSiniestrosPorUsuarioId(usuarioId);
 
@@ -52,7 +52,7 @@ namespace Application.UserCase
             foreach (Poliza poliza in polizas)
             {
                 // Convertimos la Poliza en un PolizaDto
-                var polizaDto = _mapper.Map<PolizaDto>(poliza);
+                var polizaDto = _mapper.Map<PolizaResponseDto>(poliza);
 
                 polizaDto.Plan = await _httpService.GetAsync<PlanDTO>($"https://localhost:7272/api/Planes/BuscarPlan?Id={poliza.PlanId}");
 

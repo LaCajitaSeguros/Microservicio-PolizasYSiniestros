@@ -1,4 +1,4 @@
-﻿using Application.NuevosDtos.DomainDto;
+﻿using Application.Dtos.Response.DtosUtils;
 using AutoMapper;
 using Domain.Entitys;
 
@@ -8,7 +8,7 @@ namespace Application.ConfigNuevoMapper
     {
         public SiniestroDtoMapper()
         {
-            CreateMap<Siniestro, SiniestroDto>()
+            CreateMap<Siniestro, SiniestroResponseDto>()
             .ForMember(dest => dest.SiniestroId, opt => opt.MapFrom(src => src.SiniestroId))
             .ForMember(dest => dest.TieneTercerosInvolucrados, opt => opt.MapFrom(src => src.TieneTercerosInvolucrados))
             .ForMember(dest => dest.Ubicacion, opt => opt.MapFrom(src => src.Ubicacion))

@@ -1,12 +1,12 @@
-﻿using Application.NuevosDtos.DomainDto;
+﻿using Application.Dtos.Response.DtosUtils;
 using Domain.Entitys;
 
 namespace Application.Interfaces.Service
 {
     public interface IFormateoUbicacionService
     {
-        public Task<BienAseguradoDto> MapearUbicacionBienAsegurado(BienAsegurado bienAsegurado);
-        public Task<List<SiniestroDto>> MapearUbicacionSiniestros(List<Siniestro> siniestros);
+        public Task<BienAseguradoResponseDto> MapearUbicacionBienAsegurado(BienAsegurado bienAsegurado);
+        public Task<List<SiniestroResponseDto>> MapearUbicacionSiniestros(List<Siniestro> siniestros);
 
     }
 }

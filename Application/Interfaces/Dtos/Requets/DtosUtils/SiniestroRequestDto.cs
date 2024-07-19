@@ -1,7 +1,8 @@
-﻿
-namespace Application.Dtos.DomainDTO
+﻿using Application.Dtos.DomainDTO;
+
+namespace Application.Dtos.Requets.DtosUtils
 {
-    public class SiniestroDTO
+    public class SiniestroRequestDto
     {
         public DateTime Fecha { get; set; }
 
@@ -9,12 +10,12 @@ namespace Application.Dtos.DomainDTO
 
         public string Observacion { get; set; }
 
-        public UbicacionDTO Ubicacion { get; set; }
+        public UbicacionRequestDto Ubicacion { get; set; }
 
 
         public List<ImagenDTO> Imagenes { get; set; }
 
-        public Boolean TieneTercerosInvolucrados { get; set; }
+        public bool TieneTercerosInvolucrados { get; set; }
 
         //public List<TercerosInvolucradosDTO> TercerosInvolucrados { get; set; }
     }

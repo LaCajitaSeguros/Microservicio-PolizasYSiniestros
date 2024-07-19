@@ -1,4 +1,4 @@
-﻿using Application.NuevosDtos.DomainDto;
+﻿using Application.Dtos.Response.DtosUtils;
 using AutoMapper;
 using Domain.Entitys;
 
@@ -8,7 +8,7 @@ namespace Application.ConfigNuevoMapper
     {
         public TercerosInvolucradosDtoMapper()
         {
-            CreateMap<Tercero, TercerosInvolucradosDto>()
+            CreateMap<Tercero, TercerosInvolucradosResponseDto>()
             .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => src.Nombre))
             .ForMember(dest => dest.CompaniaDeSeguro, opt => opt.MapFrom(src => src.CompaniaDeSeguro))
             .ForMember(dest => dest.Ubicacion, opt => opt.MapFrom(src => src.Ubicacion))

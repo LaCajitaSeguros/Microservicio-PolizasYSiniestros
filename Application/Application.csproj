@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interfaces\Dtos\Response\Poliza\**" />
+    <EmbeddedResource Remove="Interfaces\Dtos\Response\Poliza\**" />
+    <None Remove="Interfaces\Dtos\Response\Poliza\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -14,11 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Dtos\Response\Poliza\" />
-    <Folder Include="NuevosDtos\Request\" />
   </ItemGroup>
 
 </Project>

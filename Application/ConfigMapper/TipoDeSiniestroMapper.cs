@@ -1,5 +1,5 @@
 ﻿using Application.Dtos.DomainDTO;
-using Application.NuevosDtos.DomainDto;
+using Application.Dtos.Response.DtosUtils;
 using Domain.Entitys;
 
 namespace Application.ConfigMapper
@@ -36,12 +36,12 @@ namespace Application.ConfigMapper
             return listTipoDeSiniestrosDtos;
         }
 
-        public static List<TipoSiniestroDto> SiniestroTipoDeSiniestroATipoDeSiniestro1(IList<SiniestroTipoDeSiniestro> siniestroTipoDeSiniestros)
+        public static List<TipoSiniestroResponseDto> SiniestroTipoDeSiniestroATipoDeSiniestro1(IList<SiniestroTipoDeSiniestro> siniestroTipoDeSiniestros)
         {
-            List<TipoSiniestroDto> listTipoDeSiniestrosDtos = new List<TipoSiniestroDto>();
+            List<TipoSiniestroResponseDto> listTipoDeSiniestrosDtos = new List<TipoSiniestroResponseDto>();
             foreach (SiniestroTipoDeSiniestro item in siniestroTipoDeSiniestros)
             {
-                TipoSiniestroDto tipoSiniestroDto = new TipoSiniestroDto();
+                TipoSiniestroResponseDto tipoSiniestroDto = new TipoSiniestroResponseDto();
                 tipoSiniestroDto.Nombre = item.TipoDeSiniestro.Nombre;
                 listTipoDeSiniestrosDtos.Add(tipoSiniestroDto);
             }

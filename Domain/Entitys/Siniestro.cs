@@ -12,7 +12,7 @@ namespace Domain.Entitys
 
         public DateTime Fecha { get; set; }
 
-        public Boolean TieneTercerosInvolucrados { get; set; } 
+        public Boolean TieneTercerosInvolucrados { get; set; }
 
         public string Imagenes { get; set; } // Ver si tomamos las url y separamos por como o creamos una tabla que contengan todas las url con imagenes
 

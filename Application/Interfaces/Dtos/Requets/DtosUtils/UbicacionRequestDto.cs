@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.Dtos.DomainDTO
+namespace Application.Dtos.Requets.DtosUtils
 {
-    public class UbicacionDTO
+    public class UbicacionRequestDto
     {
         [Required(ErrorMessage = "Se requiere el ID de provincia.")]
         public int ProvinciaId { get; set; }

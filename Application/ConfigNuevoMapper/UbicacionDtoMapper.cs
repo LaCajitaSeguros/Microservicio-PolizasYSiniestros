@@ -1,4 +1,4 @@
-﻿using Application.NuevosDtos.DomainDto;
+﻿using Application.Dtos.Response.DtosUtils;
 using AutoMapper;
 using Domain.Entitys;
 
@@ -8,7 +8,7 @@ namespace Application.ConfigNuevoMapper
     {
         public UbicacionDtoMapper()
         {
-            CreateMap<Ubicacion, UbicacionDto>()
+            CreateMap<Ubicacion, UbicacionResponseDto>()
             .ForMember(dest => dest.Calle, opt => opt.MapFrom(src => src.Calle))
             .ForMember(dest => dest.Altura, opt => opt.MapFrom(src => src.Altura)).ReverseMap();
 

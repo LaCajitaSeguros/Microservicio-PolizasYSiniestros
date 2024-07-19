@@ -1,9 +1,9 @@
-﻿using Application.NuevosDtos.DomainDto;
+﻿using Application.Dtos.Response.DtosUtils;
 
 namespace Application.Interfaces.Service
 {
     public interface IFormateoVehiculoVersionService
     {
-        public Task<VehiculoVersioDto> MapearVehiculoVersion(int versionId);
+        public Task<VehiculoVersioResponseDto> MapearVehiculoVersion(int versionId);
     }
 }

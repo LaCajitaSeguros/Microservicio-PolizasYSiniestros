@@ -1,6 +1,6 @@
-﻿using Application.Interfaces.Repository;
+﻿using Application.Dtos.Response.DtosUtils;
+using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
-using Application.NuevosDtos.DomainDto;
 using AutoMapper;
 
 namespace Application.UserCase
@@ -16,10 +16,10 @@ namespace Application.UserCase
             _mapper = mapper;
         }
 
-        public async Task<VehiculoVersioDto> MapearVehiculoVersion(int versionId)
+        public async Task<VehiculoVersioResponseDto> MapearVehiculoVersion(int versionId)
         {
-            VehiculoVersioDto vehiculoVersioDto = _mapper
-                                                     .Map<VehiculoVersioDto>(
+            VehiculoVersioResponseDto vehiculoVersioDto = _mapper
+                                                     .Map<VehiculoVersioResponseDto>(
                                                         await _versionRepository.
                                                             BuscarVersionPorVersionIdAsync(versionId));
 

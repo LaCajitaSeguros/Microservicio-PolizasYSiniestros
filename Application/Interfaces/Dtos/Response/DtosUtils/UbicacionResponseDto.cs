@@ -1,6 +1,6 @@
-﻿namespace Application.NuevosDtos.DomainDto
+﻿namespace Application.Dtos.Response.DtosUtils
 {
-    public class UbicacionDto
+    public class UbicacionResponseDto
     {
         public string Provincia { get; set; }
 
